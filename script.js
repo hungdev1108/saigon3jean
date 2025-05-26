@@ -182,4 +182,48 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     `;
   document.head.appendChild(style);
+
+  // Video Modal Popup
+  const videoModal = document.getElementById("videoModal");
+  const watchVideoBtn = document.getElementById("watchVideoBtn");
+  const closeVideoModal = document.getElementById("closeVideoModal");
+  const videoPlayer = document.getElementById("videoPlayer");
+
+  // Open video modal
+  if (watchVideoBtn) {
+    watchVideoBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      videoModal.classList.add("show");
+      setTimeout(() => {
+        videoPlayer.play();
+      }, 300);
+    });
+  }
+
+  // Close video modal
+  if (closeVideoModal) {
+    closeVideoModal.addEventListener("click", function () {
+      videoPlayer.pause();
+      videoPlayer.currentTime = 0;
+      videoModal.classList.remove("show");
+    });
+  }
+
+  // Close modal when clicking outside
+  window.addEventListener("click", function (e) {
+    if (e.target === videoModal) {
+      videoPlayer.pause();
+      videoPlayer.currentTime = 0;
+      videoModal.classList.remove("show");
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && videoModal.classList.contains("show")) {
+      videoPlayer.pause();
+      videoPlayer.currentTime = 0;
+      videoModal.classList.remove("show");
+    }
+  });
 });
