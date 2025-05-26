@@ -2,8 +2,16 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content="Saigon 3 Jeans" />
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saigon 3</title>
+    <title>Saigon 3 Jean</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,17 +24,24 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="sticky-top">
-      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand" href="#">
-            <img src="/Logo@2x.png" alt="Saigon 3 Logo" class="logo" />
+            <img
+              src="images/sg3jeans_logo.png"
+              alt="Saigon 3 Logo"
+              class="logo"
+            />
           </a>
           <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -36,16 +51,16 @@
           >
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#">WHO WE ARE</a>
+                <a class="nav-link" href="#about">WHO WE ARE</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">TECHNOLOGY</a>
+                <a class="nav-link" href="#technology">TECHNOLOGY</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">SUSTAINABILITY</a>
+                <a class="nav-link" href="#sustainability">SUSTAINABILITY</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">CONTACT</a>
+                <a class="nav-link" href="#contact">CONTACT</a>
               </li>
             </ul>
           </div>
@@ -62,9 +77,13 @@
           class="img-fluid w-100"
         />
         <div class="overlay"></div>
-        <div class="text-overlay">
-          <h1>WELCOME TO<br />SAIGON 3 JEAN</h1>
-        </div>
+      </div>
+      <div class="text-overlay">
+        <h1>WELCOME TO<br />SAIGON 3 JEAN</h1>
+      </div>
+      <div class="scroll-indicator">
+        <div class="mouse"></div>
+        <div class="arrow-down"></div>
       </div>
     </section>
 
@@ -88,7 +107,11 @@
                   Our state-of-the-art facilities provide high-quality garment
                   production with advanced technologies.
                 </p>
-                <a href="#" class="btn btn-outline-light">LEARN MORE</a>
+                <a href="#" class="btn btn-outline-light" id="watchVideoBtn"
+                  >WATCH VIDEO
+                  <span style="margin-left: 8px"
+                    ><i class="fas fa-play-circle"></i></span
+                ></a>
               </div>
             </div>
           </div>
@@ -99,7 +122,6 @@
                   src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
                   alt="Sustainable Production"
                   class="img-fluid w-100"
-                  style="height: 200px; object-fit: cover"
                 />
               </div>
               <div class="card-body green-bg text-white">
@@ -119,7 +141,6 @@
                   src="https://images.unsplash.com/photo-1498084393753-b411b2d26b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80"
                   alt="Energy Infrastructure"
                   class="img-fluid w-100"
-                  style="height: 200px; object-fit: cover"
                 />
               </div>
               <div class="card-body brown-bg text-white">
@@ -136,13 +157,30 @@
       </div>
     </section>
 
+    <!-- Video Modal Popup -->
+    <div class="video-modal" id="videoModal">
+      <div class="video-modal-content">
+        <div class="video-modal-header">
+          <button class="video-modal-close" id="closeVideoModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="video-modal-body">
+          <video id="videoPlayer" controls>
+            <source src="/SAIGON 3_JEAN.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
     <!-- AI Integration Section -->
     <section class="ai-integration">
       <div class="container-fluid p-0">
         <div class="row g-0">
           <div class="col-12 position-relative">
             <img
-              src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+              src="/images/home_banner-section2.jpg"
               alt="Conference Room"
               class="img-fluid w-100"
             />
@@ -159,7 +197,7 @@
     </section>
 
     <!-- Description Text Section -->
-    <section class="description-text py-4">
+    <!-- <section class="description-text py-4">
       <div class="container">
         <p class="text-center">
           We focus on optimizing our production method to ensure the delivery of
@@ -169,13 +207,23 @@
           efficient production process.
         </p>
       </div>
+    </section> -->
+
+    <!-- Divider Line Section -->
+    <section class="divider-section pb-4">
+      <div class="container">
+        <hr
+          class="divider"
+          style="border-top: 2px solid rgba(0, 0, 0, 0.3); margin: 2rem auto"
+        />
+      </div>
     </section>
 
     <!-- Factory View Section -->
-    <section class="factory-view mb-5">
+    <section class="factory-view mb-4">
       <div class="container-fluid p-0">
         <img
-          src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+          src="./images/home_banner-section3.png"
           alt="Factory Aerial View"
           class="img-fluid w-100"
         />
@@ -184,79 +232,111 @@
 
     <!-- Our Customers Section -->
     <section class="customers py-5">
-      <div class="container text-center">
-        <h2 class="section-title">OUR CUSTOMER</h2>
-        <div class="customer-category mt-4">
-          <h4>DENIM & WOVEN</h4>
-          <div class="row customer-logos justify-content-center">
-            <div class="col-4 col-md-2 mb-4">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/9/92/UNIQLO_logo.svg"
-                alt="Uniqlo"
-                class="img-fluid"
-                style="max-height: 50px"
-              />
-            </div>
-            <div class="col-4 col-md-2 mb-4">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Muji_logo.svg"
-                alt="Muji"
-                class="img-fluid"
-                style="max-height: 50px"
-              />
-            </div>
-            <div class="col-4 col-md-2 mb-4">
-              <img
-                src="https://i.imgur.com/o4VR4Xd.png"
-                alt="Rodd & Gunn"
-                class="img-fluid"
-                style="max-height: 50px"
-              />
-            </div>
-            <div class="col-4 col-md-2 mb-4">
-              <img
-                src="https://i.imgur.com/KJv1xKS.png"
-                alt="Gaz Man"
-                class="img-fluid"
-                style="max-height: 50px"
-              />
-            </div>
+      <div class="container-fluid">
+        <div class="customers-wrapper position-relative">
+          <!-- Background Image -->
+          <div class="customers-background">
+            <img
+              src="./images/branding_our_customer/back_ground.png"
+              alt="World Map"
+              class="world-map-bg"
+            />
           </div>
-        </div>
-        <div class="customer-category mt-4">
-          <h4>KNIT</h4>
-          <div class="row customer-logos justify-content-center">
-            <div class="col-4 col-md-2 mb-4">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/3/36/Chico%27s_Logo.svg"
-                alt="Chico's"
-                class="img-fluid"
-                style="max-height: 50px"
-              />
-            </div>
-            <div class="col-4 col-md-2 mb-4">
-              <img
-                src="https://i.imgur.com/A9uYPZR.png"
-                alt="Drew House"
-                class="img-fluid"
-                style="max-height: 50px"
-              />
-            </div>
-            <div class="col-4 col-md-2 mb-4">
-              <img
-                src="https://i.imgur.com/XVTkNuB.png"
-                alt="The Upside"
-                class="img-fluid"
-                style="max-height: 50px"
-              />
-            </div>
-            <div class="col-4 col-md-2 mb-4">
-              <img
-                src="https://i.imgur.com/Sz8TnTh.png"
-                alt="Golf"
-                class="img-fluid"
-                style="max-height: 50px"
-              />
+
+          <!-- Content Overlay -->
+          <div class="customers-content">
+            <div class="container">
+              <h2 class="section-title text-center mb-5">OUR CUSTOMER</h2>
+
+              <!-- DENIM & WOVEN Section -->
+              <div class="customer-category mb-2">
+                <h4 class="text-center mb-4">DENIM & WOVEN</h4>
+                <div
+                  class="row customer-logos-row justify-content-center align-items-center"
+                >
+                  <div class="col-6 col-md-3 mb-3">
+                    <div class="customer-logo-item">
+                      <img
+                        src="./images/branding_our_customer/uniqlo.png"
+                        alt="Uniqlo"
+                        class="img-fluid customer-logo"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3 mb-3">
+                    <div class="customer-logo-item">
+                      <img
+                        src="./images/branding_our_customer/muji.png"
+                        alt="Muji"
+                        class="img-fluid customer-logo"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3 mb-3">
+                    <div class="customer-logo-item">
+                      <img
+                        src="./images/branding_our_customer/rodd&gunn.png"
+                        alt="Rodd & Gunn"
+                        class="img-fluid customer-logo"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3 mb-3">
+                    <div class="customer-logo-item">
+                      <img
+                        src="./images/branding_our_customer/gazman.png"
+                        alt="Gaz Man"
+                        class="img-fluid customer-logo"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- KNIT Section -->
+              <div class="customer-category">
+                <h4 class="text-center mb-4">KNIT</h4>
+                <div
+                  class="row customer-logos-row justify-content-center align-items-center"
+                >
+                  <div class="col-6 col-md-3 mb-3">
+                    <div class="customer-logo-item">
+                      <img
+                        src="./images/branding_our_customer/chico.png"
+                        alt="Chico's"
+                        class="img-fluid customer-logo"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3 mb-3">
+                    <div class="customer-logo-item">
+                      <img
+                        src="./images/branding_our_customer/drewhouse.png"
+                        alt="Drew House"
+                        class="img-fluid customer-logo"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3 mb-3">
+                    <div class="customer-logo-item">
+                      <img
+                        src="./images/branding_our_customer/the loyalist.png"
+                        alt="The Loyalist"
+                        class="img-fluid customer-logo"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3 mb-3">
+                    <div class="customer-logo-item">
+                      <img
+                        src="./images/branding_our_customer/golf.png"
+                        alt="Golf"
+                        class="img-fluid customer-logo"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -264,38 +344,124 @@
     </section>
 
     <!-- Certification Section -->
-    <section class="certification py-5 bg-light">
-      <div class="container text-center">
-        <h2 class="section-title">CERTIFICATION</h2>
-        <div class="row mt-4">
-          <div class="col-md-4 mb-4">
-            <div class="cert-box p-4 bg-white">
+    <section class="certification py-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-5">CERTIFICATION</h2>
+        <div class="row">
+          <!-- Column 1 - LEED Gold -->
+          <div class="col-lg-4 mb-4">
+            <div class="cert-item leed-cert">
               <img
-                src="https://i.imgur.com/RUzoMF1.png"
-                alt="ISO Certification"
-                class="img-fluid"
-                style="max-height: 100px"
+                src="./images/certification/leed_gold.png"
+                alt="LEED Gold Certificate"
+                class="cert-image"
               />
+              <div class="leed-text-container">
+                <div class="leed-text-item">LEADERSHIP IN</div>
+                <div class="leed-text-item">ENERGY &</div>
+                <div class="leed-text-item">ENVIRONMENTAL</div>
+                <div class="leed-text-item">DESIGN</div>
+              </div>
             </div>
           </div>
-          <div class="col-md-4 mb-4">
-            <div class="cert-box p-4 bg-white">
+
+          <!-- Column 2 - ISO Certificate -->
+          <div class="col-lg-4 mb-4">
+            <div class="cert-item iso-cert">
               <img
-                src="https://i.imgur.com/yQyp40U.png"
-                alt="OEKO-TEX Certification"
-                class="img-fluid"
-                style="max-height: 100px"
+                src="./images/certification/certificate.png"
+                alt="ISO 9001:2015 and ISO 14001:2015"
+                class="cert-image"
               />
+              <div class="iso-text-container">
+                <div class="iso-text-item">ISO 9001: 2015</div>
+                <div class="iso-text-item">ISO 14001: 2015</div>
+              </div>
             </div>
           </div>
-          <div class="col-md-4 mb-4">
-            <div class="cert-box p-4 bg-white">
-              <img
-                src="https://i.imgur.com/Dh7LpK0.png"
-                alt="GOTS Certification"
-                class="img-fluid"
-                style="max-height: 100px"
-              />
+
+          <!-- Column 3 - Other Certifications -->
+          <div class="col-lg-4 mb-4">
+            <div class="certifications-list">
+              <!-- Higg Index -->
+              <div class="cert-row mb-3">
+                <div class="cert-row-content higg-cert">
+                  <div class="cert-icon">
+                    <img
+                      src="./images/certification/higg_index.png"
+                      alt="Higg Index"
+                      class="cert-small-image"
+                    />
+                  </div>
+                  <div class="cert-text">
+                    <div class="cert-title">SUSTAINABLE MANUFACTURING</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- OEKO-TEX -->
+              <div class="cert-row mb-3">
+                <div class="cert-row-content oeko-cert">
+                  <div class="cert-icon">
+                    <img
+                      src="./images/certification/oeko_tex.png"
+                      alt="OEKO-TEX Standard 100"
+                      class="cert-small-image"
+                    />
+                  </div>
+                  <div class="cert-text">
+                    <div class="cert-title">SAFE & CARING PRODUCTS</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EIM Score -->
+              <div class="cert-row mb-3">
+                <div class="cert-row-content eim-cert">
+                  <div class="cert-icon">
+                    <img
+                      src="./images/certification/eim_score.png"
+                      alt="EIM Score"
+                      class="cert-small-image"
+                    />
+                  </div>
+                  <div class="cert-text">
+                    <div class="cert-title">SUSTAINABLE TECHNOLOGY</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sedex -->
+              <div class="cert-row mb-3">
+                <div class="cert-row-content sedex-cert">
+                  <div class="cert-icon">
+                    <img
+                      src="./images/certification/sedex.png"
+                      alt="Sedex SMETA"
+                      class="cert-small-image"
+                    />
+                  </div>
+                  <div class="cert-text">
+                    <div class="cert-title">SOCIAL RESPONSIBILITY</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fast Retailing -->
+              <div class="cert-row">
+                <div class="cert-row-content fast-cert">
+                  <div class="cert-icon">
+                    <img
+                      src="./images/certification/fast_retailing.png"
+                      alt="Fast Retailing"
+                      class="cert-small-image"
+                    />
+                  </div>
+                  <div class="cert-text">
+                    <div class="cert-title">CERTIFIED SUB-CONTRACTOR</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -307,75 +473,157 @@
       <div class="container">
         <h2 class="section-title text-center">NEWS</h2>
         <div class="row mt-4">
-          <div class="col-md-6 mb-4">
+          <div class="col-md-5 mb-4">
             <div class="news-item position-relative">
               <img
-                src="https://images.unsplash.com/photo-1560523159-4a9692d222f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80"
+                src="/images/news/post_1.jpg"
                 alt="News"
                 class="img-fluid w-100"
               />
               <div class="news-overlay">
-                <h5 class="text-white">
-                  BÀI ĐĂNG TÓM MẪN TUYỂN DỤNG TỐP TRỰC LUYỆN KINH DOANH LẦN 2
-                  TẠI TP.HCM
-                </h5>
-                <a href="#" class="btn btn-primary">CONTACT US</a>
+                <h5 class="text-white">SAIGON 3 JEAN LLC</h5>
+                <p class="text-white text-justify mb-3">
+                  The company just began operations at the end of 2018. It was
+                  built on a 5-hectare campus with a construction floor area of
+                  over 51,000m², fully meeting all the standards of a green
+                  building according to LEED assessment criteria.
+                </p>
+                <a href="#" class="btn btn-primary">READ MORE</a>
               </div>
             </div>
           </div>
-          <div class="col-md-6 mb-4">
+          <div class="col-md-7 mb-4">
             <div class="news-list">
               <div class="news-list-item mb-3">
-                <h6>
-                  05/08/23: TIÊU ĐỀ BÀI VIẾT TIÊU ĐỀ BÀI VIẾT TIÊU ĐỀ BÀI VIẾT
-                  TIÊU ĐỀ BÀI VIẾT
-                </h6>
-                <p>Mô tả ngắn về bài viết...</p>
+                <div class="news-item-content">
+                  <div class="news-thumbnail">
+                    <img
+                      src="/images/news/post_2.png"
+                      alt="News Thumbnail"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="news-info">
+                    <h6 class="news-title">
+                      SAIGON 3 JEAN ACHIEVES LEED GOLD CERTIFICATION FOR GREEN
+                      MANUFACTURING
+                    </h6>
+                    <p class="news-excerpt">
+                      Our state-of-the-art denim manufacturing facility
+                      officially receives LEED Gold certification, reinforcing
+                      our commitment to sustainable development and
+                      environmental responsibility....
+                    </p>
+                    <span class="news-date">05/08/2025</span>
+                  </div>
+                </div>
               </div>
               <div class="news-list-item mb-3">
-                <h6>
-                  03/15/23: TIÊU ĐỀ BÀI VIẾT TIÊU ĐỀ BÀI VIẾT TIÊU ĐỀ BÀI VIẾT
-                  TIÊU ĐỀ BÀI VIẾT
-                </h6>
-                <p>Mô tả ngắn về bài viết...</p>
+                <div class="news-item-content">
+                  <div class="news-thumbnail">
+                    <img
+                      src="/images/news/post_3.jpg"
+                      alt="News Thumbnail"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="news-info">
+                    <h6 class="news-title">
+                      LAUNCHING ECO-FRIENDLY DENIM COLLECTION FALL 2025
+                    </h6>
+                    <p class="news-excerpt">
+                      Our new denim collection features 100% organic cotton and
+                      non-toxic dyeing technology, delivering sustainable
+                      fashion choices for modern consumers worldwide....
+                    </p>
+                    <span class="news-date">03/15/2025</span>
+                  </div>
+                </div>
               </div>
               <div class="news-list-item mb-3">
-                <h6>
-                  02/25/23: TIÊU ĐỀ BÀI VIẾT TIÊU ĐỀ BÀI VIẾT TIÊU ĐỀ BÀI VIẾT
-                  TIÊU ĐỀ BÀI VIẾT
-                </h6>
-                <p>Mô tả ngắn về bài viết...</p>
+                <div class="news-item-content">
+                  <div class="news-thumbnail">
+                    <img
+                      src="/images/news/post_4.png"
+                      alt="News Thumbnail"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="news-info">
+                    <h6 class="news-title">
+                      SAIGON 3 JEAN SIGNS STRATEGIC PARTNERSHIP WITH
+                      INTERNATIONAL BRANDS
+                    </h6>
+                    <p class="news-excerpt">
+                      The company successfully secured export contracts with
+                      leading European fashion brands, expanding global market
+                      presence and strengthening international
+                      competitiveness....
+                    </p>
+                    <span class="news-date">02/25/2025</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news-list-item mb-3">
+                <div class="news-item-content">
+                  <div class="news-thumbnail">
+                    <img
+                      src="/images/news/post_5.png"
+                      alt="News Thumbnail"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="news-info">
+                    <h6 class="news-title">
+                      SAIGON 3 JEAN SHOWCASES INNOVATION AT VIETNAM FASHION EXPO
+                      2025
+                    </h6>
+                    <p class="news-excerpt">
+                      Company participates in Vietnam's largest fashion
+                      exhibition, presenting latest denim trends and advanced
+                      manufacturing technologies to industry professionals and
+                      buyers...
+                    </p>
+                    <span class="news-date">02/25/2025</span>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12 text-center">
+            <a href="#" class="btn btn-outline-primary btn-lg px-4"
+              >View all news</a
+            >
           </div>
         </div>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section py-5 bg-light">
+    <section class="contact-section py-5">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 mb-4">
-            <div class="contact-box p-4">
+          <div class="col-md-4 mb-4">
+            <div class="contact-box">
               <h4>CONTACT</h4>
-              <p>
-                Saigon III Enterprise<br />
-                Address: Sample Street, District, City<br />
-                Phone: +xx xxx xxx xxx<br />
-                Email: info@saigon3.com
+              <h5 class="contact-subtitle">Sustainable Partnership</h5>
+              <p class="contact-description">
+                We seek like-minded provide high-quality manufacturing services
+                innovation, and work together sustainable growth
               </p>
-              <a href="#" class="btn btn-primary">CONTACT US</a>
+              <a href="#" class="btn btn-dark">CONTACT US</a>
             </div>
           </div>
-          <div class="col-md-6 mb-4">
-            <div class="work-with-us-box p-4">
+          <div class="col-md-4 mb-4">
+            <div class="work-with-us-box">
               <h4>WORK WITH US</h4>
-              <p>
-                Join our team at Saigon Enterprise III. We're looking for
-                talented individuals to help us grow and innovate.
+              <p class="work-description">
+                We are looking for intelligent, passionate individuals who are
+                ready to join us in building and growing the company
               </p>
-              <a href="#" class="btn btn-primary">LEARN MORE</a>
+              <a href="#" class="btn btn-dark">LEARN MORE</a>
             </div>
           </div>
         </div>
@@ -388,7 +636,7 @@
         <div class="row">
           <div class="col-md-3 mb-4">
             <img
-              src="https://i.imgur.com/6yxm23k.png"
+              src="./images/sg3jeans_logo.png"
               alt="Saigon 3 Logo"
               class="mb-3"
               style="height: 50px"
@@ -401,42 +649,30 @@
             </div>
           </div>
           <div class="col-md-3 mb-4">
-            <h5>CONTACT US</h5>
+            <h5>WHO WE ARE</h5>
             <ul class="list-unstyled">
-              <li>Address</li>
-              <li>Phone</li>
-              <li>Email</li>
-              <li>Fax</li>
+              <li>Overview</li>
+              <li>Factory</li>
             </ul>
           </div>
           <div class="col-md-3 mb-4">
-            <h5>SITE FRIENDLY NAVIGATION HELP</h5>
+            <h5>TECHNOLOGY</h5>
             <ul class="list-unstyled">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Products</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#">Machinery</a></li>
+              <li><a href="#">Production</a></li>
             </ul>
           </div>
           <div class="col-md-3 mb-4">
-            <h5>NEWSLETTER</h5>
-            <p>Subscribe to our newsletter</p>
-            <form>
-              <div class="input-group mb-3">
-                <input
-                  type="email"
-                  class="form-control"
-                  placeholder="Your email"
-                />
-                <button class="btn btn-primary" type="submit">Subscribe</button>
-              </div>
-            </form>
+            <h5>SUSTAINABILITY</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">Eco-friendly infrastructure</a></li>
+              <li><a href="#">Automation</a></li>
+            </ul>
           </div>
         </div>
         <div class="row mt-4">
           <div class="col-12 text-center">
-            <p class="mb-0">© 2023 Saigon 3 Enterprise. All rights reserved.</p>
+            <p class="mb-0">© 2025 Saigon 3 Jean. All rights reserved.</p>
           </div>
         </div>
       </div>
