@@ -93,13 +93,13 @@
     if (existingNavItems.length === 0) {
       navItemsHTML = `
         <li class="sg3-drawer-nav-item">
-            <a href="index.html" class="sg3-drawer-nav-link">
+            <a href="/index.html" class="sg3-drawer-nav-link">
                 <i class="sg3-drawer-nav-icon fas fa-home"></i>
                 Trang chủ
             </a>
         </li>
         <li class="sg3-drawer-nav-item">
-            <a href="contact.html" class="sg3-drawer-nav-link">
+            <a href="/pages/contact.html" class="sg3-drawer-nav-link">
                 <i class="sg3-drawer-nav-icon fas fa-envelope"></i>
                 Liên hệ
             </a>
