@@ -248,7 +248,7 @@ function renderPagination() {
   paginationControls.appendChild(nextItem);
 }
 
-// File upload functionality
+// Setup file upload
 function setupFileUpload() {
   // Choose file button click
   chooseFileBtn.addEventListener("click", () => {
@@ -258,20 +258,16 @@ function setupFileUpload() {
   // File input change
   cvFileInput.addEventListener("change", handleFileSelect);
 
-  // Drag and drop events
-  cvUploadArea.addEventListener("click", () => {
-    if (!fileInfo.style.display || fileInfo.style.display === "none") {
-      cvFileInput.click();
-    }
-  });
+  // Remove file button click
+  removeFileBtn.addEventListener("click", removeFile);
 
+  // Drag and drop functionality
   cvUploadArea.addEventListener("dragover", (e) => {
     e.preventDefault();
     cvUploadArea.classList.add("dragover");
   });
 
-  cvUploadArea.addEventListener("dragleave", (e) => {
-    e.preventDefault();
+  cvUploadArea.addEventListener("dragleave", () => {
     cvUploadArea.classList.remove("dragover");
   });
 
@@ -279,16 +275,51 @@ function setupFileUpload() {
     e.preventDefault();
     cvUploadArea.classList.remove("dragover");
 
-    const files = e.dataTransfer.files;
-    if (files.length > 0) {
-      handleFile(files[0]);
+    if (e.dataTransfer.files.length) {
+      handleFile(e.dataTransfer.files[0]);
     }
   });
 
-  // Remove file button
-  removeFileBtn.addEventListener("click", () => {
-    removeFile();
-  });
+  // Form submission
+  applicationForm.addEventListener("submit", handleApplicationSubmit);
+
+  // Adjust modal height on mobile devices
+  const applicationModal = document.getElementById("applicationModal");
+  if (applicationModal) {
+    applicationModal.addEventListener("show.bs.modal", adjustModalForMobile);
+    window.addEventListener("resize", () => {
+      if (applicationModal.classList.contains("show")) {
+        adjustModalForMobile();
+      }
+    });
+  }
+}
+
+// Adjust modal for better mobile experience
+function adjustModalForMobile() {
+  const isMobile = window.innerWidth < 768;
+  const modalDialog = document.querySelector("#applicationModal .modal-dialog");
+  const modalContent = document.querySelector(
+    "#applicationModal .modal-content"
+  );
+
+  if (isMobile) {
+    // On mobile, make sure the modal is properly sized
+    modalDialog.style.margin = "0.5rem";
+    modalDialog.style.maxWidth = "calc(100% - 1rem)";
+    modalContent.style.maxHeight = `${window.innerHeight - 20}px`;
+
+    // Scroll to top of form when opened on mobile
+    setTimeout(() => {
+      const modalBody = document.querySelector("#applicationModal .modal-body");
+      if (modalBody) modalBody.scrollTop = 0;
+    }, 300);
+  } else {
+    // Reset styles on desktop
+    modalDialog.style.margin = "";
+    modalDialog.style.maxWidth = "";
+    modalContent.style.maxHeight = "";
+  }
 }
 
 function handleFileSelect(e) {
@@ -391,69 +422,142 @@ function showJobDetails(job) {
   }
 }
 
-// Show application modal
+// Show job application modal
 function showApplicationModal(job) {
   currentJob = job;
 
-  // Update modal with job info
+  // Update job info in modal
   document.getElementById("jobTitleDisplay").textContent = job.title;
   document.getElementById("jobLocationDisplay").textContent = job.location;
 
-  // Reset form
+  // Clear form fields
   applicationForm.reset();
   removeFile();
 
   // Show modal
-  applicationModal.show();
+  const modalElement = document.getElementById("applicationModal");
+  const modal =
+    bootstrap.Modal.getInstance(modalElement) ||
+    new bootstrap.Modal(modalElement);
+  modal.show();
+
+  // Focus on first input field after modal is shown
+  modalElement.addEventListener(
+    "shown.bs.modal",
+    function () {
+      document.getElementById("fullName").focus();
+    },
+    { once: true }
+  );
 }
 
 // Handle form submission
 function handleApplicationSubmit(e) {
   e.preventDefault();
 
-  // Validate required fields
-  const requiredFields = ["fullName", "email", "phone"];
-  let isValid = true;
+  // Get form data
+  const formData = new FormData(applicationForm);
 
-  requiredFields.forEach((fieldId) => {
-    const field = document.getElementById(fieldId);
-    if (!field.value.trim()) {
-      field.classList.add("is-invalid");
+  // Validate form
+  let isValid = true;
+  const requiredFields = ["fullName", "email", "phone"];
+
+  requiredFields.forEach((field) => {
+    const input = document.getElementById(field);
+    if (!input.value.trim()) {
+      input.classList.add("is-invalid");
       isValid = false;
     } else {
-      field.classList.remove("is-invalid");
+      input.classList.remove("is-invalid");
+      input.classList.add("is-valid");
     }
   });
 
   // Check if CV is uploaded
-  if (!cvFileInput.files.length) {
-    alert("Please upload your CV/Resume.");
-    return;
+  const hasFile = fileInfo.style.display === "block";
+  if (!hasFile) {
+    cvUploadArea.classList.add("border-danger");
+    isValid = false;
+  } else {
+    cvUploadArea.classList.remove("border-danger");
   }
 
   if (!isValid) {
-    alert("Please fill in all required fields.");
+    // Show validation message
+    const modalBody = document.querySelector("#applicationModal .modal-body");
+
+    // Check if validation message already exists
+    let validationMessage = document.getElementById("validation-message");
+    if (!validationMessage) {
+      validationMessage = document.createElement("div");
+      validationMessage.id = "validation-message";
+      validationMessage.className = "alert alert-danger mt-3";
+      validationMessage.innerHTML =
+        '<i class="fas fa-exclamation-triangle me-2"></i>Please fill in all required fields and upload your CV.';
+      modalBody.insertBefore(validationMessage, modalBody.firstChild);
+    }
+
+    // Scroll to top to show validation message on mobile
+    modalBody.scrollTop = 0;
     return;
   }
 
-  // Disable submit button
-  const submitBtn = document.getElementById("submitApplicationBtn");
-  const originalText = submitBtn.innerHTML;
-  submitBtn.disabled = true;
-  submitBtn.innerHTML =
-    '<i class="fas fa-spinner fa-spin me-1"></i>SUBMITTING...';
+  // Remove validation message if exists
+  const validationMessage = document.getElementById("validation-message");
+  if (validationMessage) {
+    validationMessage.remove();
+  }
 
   // Simulate form submission
-  setTimeout(() => {
-    alert(
-      `Thank you for applying for ${currentJob.title}! We will review your application and contact you soon.`
-    );
-    applicationModal.hide();
+  const submitBtn = document.getElementById("submitApplicationBtn");
+  const originalText = submitBtn.innerHTML;
 
-    // Reset submit button
+  submitBtn.disabled = true;
+  submitBtn.innerHTML =
+    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...';
+
+  // Simulate API call with timeout
+  setTimeout(() => {
+    // Hide modal
+    const modalElement = document.getElementById("applicationModal");
+    const modal = bootstrap.Modal.getInstance(modalElement);
+    modal.hide();
+
+    // Show success message
+    showAlert(
+      "Application submitted successfully! We will contact you soon.",
+      "success"
+    );
+
+    // Reset button
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalText;
-  }, 2000);
+  }, 1500);
+}
+
+// Show alert message
+function showAlert(message, type = "success") {
+  const alertDiv = document.createElement("div");
+  alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+  alertDiv.style.zIndex = "9999";
+  alertDiv.style.maxWidth = "90%";
+  alertDiv.style.width = "500px";
+
+  alertDiv.innerHTML = `
+    <i class="fas fa-${
+      type === "success" ? "check-circle" : "exclamation-circle"
+    } me-2"></i>
+    ${message}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  `;
+
+  document.body.appendChild(alertDiv);
+
+  // Auto dismiss after 5 seconds
+  setTimeout(() => {
+    alertDiv.classList.remove("show");
+    setTimeout(() => alertDiv.remove(), 300);
+  }, 5000);
 }
 
 // Back to job list
@@ -486,32 +590,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (currentJob) {
       showApplicationModal(currentJob);
     }
-  });
-
-  // Application form submission
-  applicationForm.addEventListener("submit", handleApplicationSubmit);
-
-  // Add validation styling on input
-  const formInputs = applicationForm.querySelectorAll(
-    "input[required], textarea[required]"
-  );
-  formInputs.forEach((input) => {
-    input.addEventListener("blur", function () {
-      if (this.value.trim()) {
-        this.classList.remove("is-invalid");
-        this.classList.add("is-valid");
-      } else {
-        this.classList.remove("is-valid");
-        this.classList.add("is-invalid");
-      }
-    });
-
-    input.addEventListener("input", function () {
-      if (this.classList.contains("is-invalid") && this.value.trim()) {
-        this.classList.remove("is-invalid");
-        this.classList.add("is-valid");
-      }
-    });
   });
 
   // Smooth scroll for page sections

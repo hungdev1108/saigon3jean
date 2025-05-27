@@ -248,7 +248,9 @@
       aria-labelledby="applicationModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-lg">
+      <div
+        class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
+      >
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="applicationModalLabel">
@@ -263,13 +265,77 @@
           </div>
           <div class="modal-body">
             <form id="applicationForm" enctype="multipart/form-data">
+              <!-- Job Information Display - Di chuyển lên đầu để người dùng thấy đang ứng tuyển cho vị trí nào -->
+              <div class="job-info-display mb-4" id="jobInfoDisplay">
+                <h6 class="text-primary mb-2">Applying for:</h6>
+                <div class="selected-job-info">
+                  <span class="job-title-display fw-bold" id="jobTitleDisplay"
+                    >Job Title</span
+                  >
+                  <span class="job-location-display" id="jobLocationDisplay"
+                    >Location</span
+                  >
+                </div>
+              </div>
+
               <div class="row">
+                <!-- Personal Information Section - Đưa lên trước để người dùng điền thông tin trước -->
+                <div class="col-lg-6 mb-4">
+                  <div class="personal-info-section">
+                    <h6 class="mb-3 fw-bold">Personal Information</h6>
+                    <div class="mb-3">
+                      <label for="fullName" class="form-label">Name *</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="fullName"
+                        name="fullName"
+                        required
+                        placeholder="Enter your full name"
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email *</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="Enter your email address"
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="phone" class="form-label">Phone *</label>
+                      <input
+                        type="tel"
+                        class="form-control"
+                        id="phone"
+                        name="phone"
+                        required
+                        placeholder="Enter your phone number"
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="address" class="form-label">Address</label>
+                      <textarea
+                        class="form-control"
+                        id="address"
+                        name="address"
+                        rows="2"
+                        placeholder="Enter your address"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- CV Upload Section -->
-                <div class="col-md-6 mb-4">
+                <div class="col-lg-6 mb-4">
                   <div class="cv-upload-section">
-                    <label class="form-label fw-bold"
-                      >Upload Your CV/Resume *</label
-                    >
+                    <h6 class="mb-3 fw-bold">Upload Your CV/Resume *</h6>
                     <div class="cv-upload-area" id="cvUploadArea">
                       <div class="upload-content">
                         <div class="upload-icon">
@@ -313,86 +379,21 @@
                         </div>
                       </div>
                     </div>
-                    <small class="text-muted"
+                    <small class="text-muted d-block mt-2"
                       >Supported formats: PDF, DOC, DOCX (Max 5MB)</small
                     >
                   </div>
                 </div>
-
-                <!-- Personal Information Section -->
-                <div class="col-md-6">
-                  <div class="personal-info-section">
-                    <div class="mb-3">
-                      <label for="fullName" class="form-label">Name *</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="fullName"
-                        name="fullName"
-                        required
-                        placeholder="Enter your full name"
-                      />
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="email" class="form-label">Email *</label>
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        name="email"
-                        required
-                        placeholder="Enter your email address"
-                      />
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="phone" class="form-label">Phone *</label>
-                      <input
-                        type="tel"
-                        class="form-control"
-                        id="phone"
-                        name="phone"
-                        required
-                        placeholder="Enter your phone number"
-                      />
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="address" class="form-label">Address</label>
-                      <textarea
-                        class="form-control"
-                        id="address"
-                        name="address"
-                        rows="3"
-                        placeholder="Enter your address"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Job Information Display -->
-              <div class="job-info-display" id="jobInfoDisplay">
-                <h6 class="text-primary mb-2">Applying for:</h6>
-                <div class="selected-job-info">
-                  <span class="job-title-display" id="jobTitleDisplay"
-                    >Job Title</span
-                  >
-                  <span class="job-location-display" id="jobLocationDisplay"
-                    >Location</span
-                  >
-                </div>
               </div>
             </form>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer flex-wrap justify-content-center">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-secondary me-2 mb-2 mb-sm-0 button-cancel"
               data-bs-dismiss="modal"
             >
-              Cancel
+              <i class="fas fa-times me-1"></i>Cancel
             </button>
             <button
               type="submit"
@@ -400,7 +401,7 @@
               class="btn btn-primary"
               id="submitApplicationBtn"
             >
-              <i class="fas fa-paper-plane me-1"></i>SUBMIT
+              <i class="fas fa-paper-plane me-1"></i>SUBMIT APPLICATION
             </button>
           </div>
         </div>
