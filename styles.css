@@ -1846,3 +1846,193 @@ footer a:hover {
     font-size: 0.9rem;
   }
 }
+
+#recruitment-page {
+
+  padding-top: 100px;
+  font-family: Inter;
+  background: #f8f9fa;
+  padding-bottom: 50px;
+
+  .title {
+    color: #000;
+    text-align: center;
+    font-family: "Inter";
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+  .content-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .job-list {
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+    width: 35%;
+  }
+
+  .job-list h2 {
+    padding: 50px 10px 20px 46px;
+    border-bottom: 1px solid #94949480;
+    color: #000;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .job-item {
+    border-bottom: 1px solid #94949480;
+    padding: 20px 10px 20px 46px  ;
+  }
+
+  .job-item a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .job-item h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .job-item p {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+
+  .icon {
+    color: gray;
+    margin-right: 5px;
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .pagination-step {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .pagination-step span {
+    padding: 4px 8px;
+    cursor: pointer;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .pagination-step .active {
+    background: #21407E;
+    color: white;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 500;
+  }
+
+  .pagination-step i {
+    stroke-width: 1px;
+    stroke: #21407E;
+  }
+
+  .pagination-total {
+    margin-top: 10px;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+
+  .about-company {
+    width: auto;
+    max-width: 50%;
+    height: fit-content;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-company img {
+    height: 30px;
+    margin-bottom: 10px;
+  }
+
+  .about-company p {
+    text-align: center;
+  }
+
+  .job-details {
+    width: 50%;
+    height: fit-content;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .job-header {
+    padding: 25px 35px 19px 35px;
+    border-bottom: 1px solid #94949480;
+  }
+
+  .job-header button{
+    padding: 5px 24px;
+    background-color: #1d3b73;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .job-content {
+    padding: 10px 35px 30px 35px;
+  }
+
+  .job-info {
+    display: flex;
+    gap: 25px;
+  }
+
+  .info-item {
+    display: flex;
+    gap: 8px;
+  }
+
+  .job-description {
+    margin-top: 32px;
+  }
+}
