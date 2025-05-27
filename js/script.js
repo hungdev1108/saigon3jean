@@ -3,14 +3,34 @@ document.addEventListener("DOMContentLoaded", function () {
   // Thêm hiệu ứng cho menu khi cuộn
   const header = document.querySelector("header");
   const scrollWatcher = () => {
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
+    if (header) {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
     }
   };
 
   window.addEventListener("scroll", scrollWatcher);
+
+  // Gọi scrollWatcher khi trang tải xong để thiết lập trạng thái ban đầu
+  scrollWatcher();
+
+  // Thử lại việc tìm header sau khi các components được load
+  setTimeout(() => {
+    const headerAfterLoad = document.querySelector("header");
+    if (headerAfterLoad && !header) {
+      // Nếu header được tìm thấy sau khi includes.js load xong
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          headerAfterLoad.classList.add("scrolled");
+        } else {
+          headerAfterLoad.classList.remove("scrolled");
+        }
+      });
+    }
+  }, 500); // Đợi 500ms để includes.js có thể load header
 
   // Khởi tạo các nút Scroll to Top
   const scrollTopBtn = document.createElement("button");
@@ -84,7 +104,9 @@ document.addEventListener("DOMContentLoaded", function () {
     link.addEventListener("click", function () {
       if (
         window.innerWidth < 992 &&
-        navbarCollapse.classList.contains("show")
+        navbarCollapse &&
+        navbarCollapse.classList.contains("show") &&
+        navbarToggler
       ) {
         navbarToggler.click();
       }
@@ -193,15 +215,19 @@ document.addEventListener("DOMContentLoaded", function () {
   if (watchVideoBtn) {
     watchVideoBtn.addEventListener("click", function (e) {
       e.preventDefault();
-      videoModal.classList.add("show");
-      setTimeout(() => {
-        videoPlayer.play();
-      }, 300);
+      if (videoModal) {
+        videoModal.classList.add("show");
+        setTimeout(() => {
+          if (videoPlayer) {
+            videoPlayer.play();
+          }
+        }, 300);
+      }
     });
   }
 
   // Close video modal
-  if (closeVideoModal) {
+  if (closeVideoModal && videoModal && videoPlayer) {
     closeVideoModal.addEventListener("click", function () {
       videoPlayer.pause();
       videoPlayer.currentTime = 0;
@@ -210,20 +236,151 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Close modal when clicking outside
-  window.addEventListener("click", function (e) {
-    if (e.target === videoModal) {
-      videoPlayer.pause();
-      videoPlayer.currentTime = 0;
-      videoModal.classList.remove("show");
-    }
-  });
+  if (videoModal && videoPlayer) {
+    window.addEventListener("click", function (e) {
+      if (e.target === videoModal) {
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
+        videoModal.classList.remove("show");
+      }
+    });
+  }
 
   // Close modal with Escape key
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && videoModal.classList.contains("show")) {
-      videoPlayer.pause();
-      videoPlayer.currentTime = 0;
-      videoModal.classList.remove("show");
+  if (videoModal && videoPlayer) {
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && videoModal.classList.contains("show")) {
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
+        videoModal.classList.remove("show");
+      }
+    });
+  }
+
+  // Contact Form Handler
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Get form data
+      const formData = new FormData(contactForm);
+      const name = formData.get("name");
+      const company = formData.get("company");
+      const email = formData.get("email");
+      const phone = formData.get("phone");
+      const subject = formData.get("subject");
+      const message = formData.get("message");
+
+      // Basic validation
+      if (!name || !company || !email || !phone || !subject || !message) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      // Get submit button
+      const submitBtn = contactForm.querySelector(".submit-btn");
+      const originalText = submitBtn.textContent;
+
+      // Show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = "SENDING...";
+      submitBtn.style.opacity = "0.7";
+
+      // Simulate form submission (replace with actual API call)
+      setTimeout(() => {
+        alert(
+          `Thank you ${name}! Your message has been sent successfully. We will contact you soon.`
+        );
+
+        // Reset form
+        contactForm.reset();
+
+        // Reset button
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        submitBtn.style.opacity = "1";
+      }, 2000);
+    });
+
+    // Add real-time validation
+    const inputs = contactForm.querySelectorAll("input, textarea");
+    inputs.forEach((input) => {
+      input.addEventListener("blur", function () {
+        validateField(this);
+      });
+
+      input.addEventListener("input", function () {
+        if (this.classList.contains("error")) {
+          validateField(this);
+        }
+      });
+    });
+
+    function validateField(field) {
+      const value = field.value.trim();
+      const isRequired = field.hasAttribute("required");
+
+      // Remove previous error styling
+      field.classList.remove("error", "success");
+
+      if (isRequired && !value) {
+        field.classList.add("error");
+        return false;
+      }
+
+      // Email validation
+      if (field.type === "email" && value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+          field.classList.add("error");
+          return false;
+        }
+      }
+
+      // Phone validation
+      if (field.type === "tel" && value) {
+        const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+        if (!phoneRegex.test(value)) {
+          field.classList.add("error");
+          return false;
+        }
+      }
+
+      if (value) {
+        field.classList.add("success");
+      }
+
+      return true;
     }
-  });
+
+    // Add validation CSS
+    const validationStyle = document.createElement("style");
+    validationStyle.textContent = `
+      #contactPage input.error,
+      #contactPage textarea.error {
+        border-color: #dc3545 !important;
+        box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1) !important;
+      }
+      
+      #contactPage input.success,
+      #contactPage textarea.success {
+        border-color: #28a745 !important;
+        box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1) !important;
+      }
+      
+      #contactPage .submit-btn:disabled {
+        cursor: not-allowed;
+        transform: none !important;
+      }
+    `;
+    document.head.appendChild(validationStyle);
+  }
 });

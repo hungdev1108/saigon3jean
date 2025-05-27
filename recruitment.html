@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Saigon 3 Jeans" />
+    <meta name="description" content="Careers - Saigon 3 Jeans" />
     <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page Title - Saigon 3 Jean</title>
+    <title>Careers - Saigon 3 Jean</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,7 +20,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <!-- Mobile Drawer CSS - Độc lập, không ảnh hưởng CSS hiện tại -->
+    <link rel="stylesheet" href="/styles/mobile-drawer.css" />
   </head>
   <body>
     <!-- Header Placeholder -->
@@ -28,36 +30,301 @@
 
     <!-- Main Content -->
     <main>
-      <!-- Page content goes here -->
-      <section id="recruitment-page" class="page-content">
-        <h1 class="title">RECRUITMENT</h1>
-        <div class="content-wrapper">
-          <section class="job-list">
-            <h2>1.000 VIỆC LÀM ĐÃ TÌM THẤY</h2>
-            <!-- Job Item Repeat -->
-            <div class="pagination">
-              <div class="pagination-step" id="paginationStep">
-                <i class="fas fa-chevron-right" id="nextBtn"></i>
-              </div>
-              <div class="pagination-total">
-                <small>1 - 20 of 981 jobs</small>
+      <!-- Main Content Section -->
+      <section class="recruitment-content py-5">
+        <div class="container">
+          <h2 class="section-title mt-5">CAREERS</h2>
+
+          <div class="row">
+            <!-- Job List Column -->
+            <div class="col-lg-5 col-md-6 mb-4">
+              <div class="job-list-card">
+                <div class="card h-100">
+                  <div class="card-header blue-bg text-white">
+                    <h3 class="mb-0">
+                      <i class="fas fa-briefcase me-2"></i>OPEN POSITIONS
+                    </h3>
+                    <small class="opacity-75">1,000 jobs found</small>
+                  </div>
+                  <div class="card-body p-0">
+                    <div class="job-list-container" id="jobListContainer">
+                      <!-- Jobs will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination-container">
+                      <nav aria-label="Job pagination">
+                        <ul
+                          class="pagination justify-content-center mb-0"
+                          id="paginationControls"
+                        >
+                          <!-- Pagination will be populated by JavaScript -->
+                        </ul>
+                      </nav>
+                      <div class="pagination-info text-center">
+                        <small class="text-muted" id="paginationInfo"
+                          >1 - 20 of 981 jobs</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </section>
 
-          <section class="about-company">
-            <img src="images/sg3jeans_logo.png" alt="Saigon 3 Jean Logo">
-            <p>
-              Saigon 3 Jean was established with a vision for sustainable development, harnessing internal strengths and applying advanced technologies to adapt flexibly to economic fluctuations.
-            </p>
-            <p>
-              As a leading unit in the garment finishing processing industry, Saigon 3 Jean garment finishing, as well as Saigon 3 Jean washing services specializing in denim washing & dyeing, are continuously innovating, improving quality, and optimizing technology in sustainable garment production.
-            </p>
-          </section>
+            <!-- Company Info / Job Details Column -->
+            <div class="col-lg-7 col-md-6">
+              <!-- Company About Section -->
+              <div class="company-info-card" id="companyInfo">
+                <div class="card h-100">
+                  <div class="card-body text-center">
+                    <img
+                      src="images/sg3jeans_logo.png"
+                      alt="Saigon 3 Jean Logo"
+                      class="company-logo mb-4"
+                    />
+                    <h4 class="card-title mb-4">ABOUT SAIGON 3 JEAN</h4>
+                    <div class="company-description">
+                      <p class="text-muted">
+                        Saigon 3 Jean was established with a vision for
+                        sustainable development, harnessing internal strengths
+                        and applying advanced technologies to adapt flexibly to
+                        economic fluctuations.
+                      </p>
+                      <p class="text-muted">
+                        As a leading unit in the garment finishing processing
+                        industry, Saigon 3 Jean continuously innovates, improves
+                        quality, and optimizes technology in sustainable garment
+                        production.
+                      </p>
+                    </div>
+                    <div class="company-stats mt-4">
+                      <div class="row">
+                        <div class="col-4">
+                          <div class="stat-item">
+                            <h5 class="stat-number">1000+</h5>
+                            <small class="text-muted">Employees</small>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <div class="stat-item">
+                            <h5 class="stat-number">15+</h5>
+                            <small class="text-muted">Years Experience</small>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <div class="stat-item">
+                            <h5 class="stat-number">50+</h5>
+                            <small class="text-muted">Global Partners</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          <section class="job-details" style="display: none;">
-            
-          </section>
+              <!-- Job Details Section (Hidden by default) -->
+              <div
+                class="job-details-card"
+                id="jobDetails"
+                style="display: none"
+              >
+                <div class="card h-100">
+                  <div class="card-header">
+                    <div
+                      class="d-flex justify-content-between align-items-start"
+                    >
+                      <div class="flex-grow-1">
+                        <h4 class="job-title mb-2" id="jobTitle">Job Title</h4>
+                        <div class="job-meta">
+                          <span class="badge bg-primary me-2" id="jobType"
+                            >Full-time</span
+                          >
+                          <small class="text-muted" id="jobPosted"
+                            >Posted today</small
+                          >
+                        </div>
+                      </div>
+                      <div class="job-actions">
+                        <button
+                          class="btn btn-outline-secondary btn-sm me-2"
+                          id="backToList"
+                        >
+                          <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button class="btn btn-primary" id="applyBtn">
+                          <i class="fas fa-paper-plane me-1"></i> Apply Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="job-location mb-4">
+                      <h6>
+                        <i class="fas fa-map-marker-alt text-primary me-2"></i
+                        >Work Location
+                      </h6>
+                      <p class="mb-0" id="jobLocation">Location</p>
+                    </div>
+
+                    <div class="job-description">
+                      <h6>
+                        <i class="fas fa-file-alt text-primary me-2"></i>Job
+                        Description
+                      </h6>
+                      <div id="jobDescription">
+                        <p>Job description will be displayed here.</p>
+                      </div>
+                    </div>
+
+                    <div class="job-requirements mt-4">
+                      <h6>
+                        <i class="fas fa-list-check text-primary me-2"></i
+                        >Requirements
+                      </h6>
+                      <ul id="jobRequirements">
+                        <li>Requirements will be listed here</li>
+                      </ul>
+                    </div>
+
+                    <div class="job-benefits mt-4">
+                      <h6>
+                        <i class="fas fa-gift text-primary me-2"></i>Benefits
+                      </h6>
+                      <ul id="jobBenefits">
+                        <li>Benefits will be listed here</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Join Us Section -->
+      <!-- <section class="why-join-us py-5 bg-light">
+        <div class="container">
+          <h2 class="section-title text-center mb-5">
+            WHY CHOOSE SAIGON 3 JEAN?
+          </h2>
+          <div class="row">
+            <div class="col-md-4 mb-4">
+              <div class="benefit-card text-center">
+                <div class="benefit-icon mb-3">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h5>Professional Work Environment</h5>
+                <p class="text-muted">
+                  Positive corporate culture with friendly colleagues who
+                  support each other.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="benefit-card text-center">
+                <div class="benefit-icon mb-3">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h5>Growth Opportunities</h5>
+                <p class="text-muted">
+                  Clear training and promotion programs with opportunities to
+                  learn new technologies.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="benefit-card text-center">
+                <div class="benefit-icon mb-3">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <h5>Attractive Benefits</h5>
+                <p class="text-muted">
+                  Competitive salary, health insurance, performance bonuses and
+                  many other perks.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- Application Process Section -->
+      <!-- <section class="application-process py-5">
+        <div class="container">
+          <h2 class="section-title text-center mb-5">APPLICATION PROCESS</h2>
+          <div class="row">
+            <div class="col-md-3 mb-4">
+              <div class="process-step text-center">
+                <div class="step-number">1</div>
+                <h6>Submit Application</h6>
+                <p class="text-muted">
+                  Send your CV and cover letter via email or website
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4">
+              <div class="process-step text-center">
+                <div class="step-number">2</div>
+                <h6>Resume Screening</h6>
+                <p class="text-muted">
+                  HR will review and contact you within 3-5 days
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4">
+              <div class="process-step text-center">
+                <div class="step-number">3</div>
+                <h6>Interview</h6>
+                <p class="text-muted">
+                  Face-to-face or online interview with team leader
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4">
+              <div class="process-step text-center">
+                <div class="step-number">4</div>
+                <h6>Result Notification</h6>
+                <p class="text-muted">
+                  Receive results and job offer information
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- Contact HR Section -->
+      <section class="contact-hr py-5 bg-light">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+              <h3 class="mb-4">CONTACT HR DEPARTMENT</h3>
+              <p class="text-muted mb-4">
+                Do you have questions about career opportunities at Saigon 3
+                Jean? Don't hesitate to contact us!
+              </p>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div class="contact-info">
+                    <i class="fas fa-envelope text-primary me-2"></i>
+                    <span>hr@saigon3jean.com</span>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="contact-info">
+                    <i class="fas fa-phone text-primary me-2"></i>
+                    <span>(+84) 28 1234 5678</span>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-primary btn-lg mt-3">
+                <i class="fas fa-paper-plane me-2"></i>Submit Your Resume
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -65,8 +332,195 @@
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
+    <!-- Application Modal -->
+    <div
+      class="modal fade"
+      id="applicationModal"
+      tabindex="-1"
+      aria-labelledby="applicationModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="applicationModalLabel">
+              <i class="fas fa-paper-plane me-2"></i>Job Application
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="applicationForm" enctype="multipart/form-data">
+              <div class="row">
+                <!-- CV Upload Section -->
+                <div class="col-md-6 mb-4">
+                  <div class="cv-upload-section">
+                    <label class="form-label fw-bold"
+                      >Upload Your CV/Resume *</label
+                    >
+                    <div class="cv-upload-area" id="cvUploadArea">
+                      <div class="upload-content">
+                        <div class="upload-icon">
+                          <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <p class="upload-text">Drag and Drop file</p>
+                        <p class="upload-or">or</p>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          id="chooseFileBtn"
+                        >
+                          CHOOSE FILE
+                        </button>
+                        <input
+                          type="file"
+                          id="cvFileInput"
+                          name="cv"
+                          accept=".pdf,.doc,.docx"
+                          style="display: none"
+                        />
+                      </div>
+                      <div
+                        class="file-info"
+                        id="fileInfo"
+                        style="display: none"
+                      >
+                        <div class="file-details">
+                          <i class="fas fa-file-pdf file-icon"></i>
+                          <div class="file-text">
+                            <span class="file-name" id="fileName"></span>
+                            <span class="file-size" id="fileSize"></span>
+                          </div>
+                          <button
+                            type="button"
+                            class="btn btn-sm btn-outline-danger"
+                            id="removeFileBtn"
+                          >
+                            <i class="fas fa-times"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <small class="text-muted"
+                      >Supported formats: PDF, DOC, DOCX (Max 5MB)</small
+                    >
+                  </div>
+                </div>
+
+                <!-- Personal Information Section -->
+                <div class="col-md-6">
+                  <div class="personal-info-section">
+                    <div class="mb-3">
+                      <label for="fullName" class="form-label">Name *</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="fullName"
+                        name="fullName"
+                        required
+                        placeholder="Enter your full name"
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email *</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="Enter your email address"
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="phone" class="form-label">Phone *</label>
+                      <input
+                        type="tel"
+                        class="form-control"
+                        id="phone"
+                        name="phone"
+                        required
+                        placeholder="Enter your phone number"
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="address" class="form-label">Address</label>
+                      <textarea
+                        class="form-control"
+                        id="address"
+                        name="address"
+                        rows="3"
+                        placeholder="Enter your address"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Additional Information -->
+              <!-- <div class="row mt-3">
+                <div class="col-12">
+                  <div class="mb-3">
+                    <label for="coverLetter" class="form-label"
+                      >Cover Letter</label
+                    >
+                    <textarea
+                      class="form-control"
+                      id="coverLetter"
+                      name="coverLetter"
+                      rows="4"
+                      placeholder="Tell us why you're interested in this position..."
+                    ></textarea>
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- Job Information Display -->
+              <div class="job-info-display" id="jobInfoDisplay">
+                <h6 class="text-primary mb-2">Applying for:</h6>
+                <div class="selected-job-info">
+                  <span class="job-title-display" id="jobTitleDisplay"
+                    >Job Title</span
+                  >
+                  <span class="job-location-display" id="jobLocationDisplay"
+                    >Location</span
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              form="applicationForm"
+              class="btn btn-primary"
+              id="submitApplicationBtn"
+            >
+              <i class="fas fa-paper-plane me-1"></i>SUBMIT
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="recuitment_scripts.js"></script>
-    <script src="includes.js"></script>
+    <script src="/js/recuitment_scripts.js"></script>
+    <script src="/js/includes.js"></script>
+    <!-- Mobile Drawer JS - Độc lập, tự động khởi tạo -->
+    <script src="/js/mobile-drawer.js"></script>
   </body>
 </html>

@@ -5,6 +5,16 @@ function loadHTML() {
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("header-placeholder").innerHTML = data;
+
+      // Reinitialize mobile drawer after header is loaded
+      if (
+        window.SG3MobileDrawer &&
+        typeof window.SG3MobileDrawer.reinit === "function"
+      ) {
+        setTimeout(() => {
+          window.SG3MobileDrawer.reinit();
+        }, 100);
+      }
     })
     .catch((error) => console.error("Error loading header:", error));
 

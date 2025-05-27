@@ -20,7 +20,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <!-- Mobile Drawer CSS - Độc lập, không ảnh hưởng CSS hiện tại -->
+    <link rel="stylesheet" href="/styles/mobile-drawer.css" />
   </head>
   <body>
     <!-- Header Placeholder -->
@@ -53,7 +55,7 @@
             <div class="card h-100">
               <div class="card-img-top video-container">
                 <video class="w-100" autoplay muted loop>
-                  <source src="/SAIGON 3_JEAN.mp4" type="video/mp4" />
+                  <source src="./videos/SAIGON_3_JEAN.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -118,14 +120,12 @@
     <!-- Video Modal Popup -->
     <div class="video-modal" id="videoModal">
       <div class="video-modal-content">
-        <div class="video-modal-header">
+        <div class="video-modal-body">
           <button class="video-modal-close" id="closeVideoModal">
             <i class="fas fa-times"></i>
           </button>
-        </div>
-        <div class="video-modal-body">
           <video id="videoPlayer" controls>
-            <source src="/SAIGON 3_JEAN.mp4" type="video/mp4" />
+            <source src="./videos/SAIGON_3_JEAN.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -579,7 +579,9 @@
     <div id="footer-placeholder"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
-    <script src="includes.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/includes.js"></script>
+    <!-- Mobile Drawer JS - Độc lập, tự động khởi tạo -->
+    <script src="/js/mobile-drawer.js"></script>
   </body>
 </html>

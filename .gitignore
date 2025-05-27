@@ -1,5 +1,7 @@
 # Loại trừ file README
 README-includes.md
+CSS_JS_CONFLICT_PREVENTION_GUIDE.md
+QUICK_REFERENCE_GUIDE.md
 
 # Các file hệ thống
 .DS_Store
@@ -7,6 +9,8 @@ Thumbs.db
 
 # Các thư mục và file môi trường
 node_modules/
+documentation/
+asp-doc/
 .env
 .env.local
 .env.development.local
