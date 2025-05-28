@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Thêm hiệu ứng Animate on Scroll cho các phần tử
   const animateElements = document.querySelectorAll(
-    ".card, .section-title, .news-item"
+    ".card, .section-title, .news-item, .news-list, .contact-box, .work-with-us-box"
   );
 
   const checkVisible = () => {

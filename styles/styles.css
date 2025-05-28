@@ -3250,3 +3250,441 @@ footer a:hover {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
 }
+
+/* Contact HR Section Responsive Styles */
+.contact-hr {
+  background-color: #f8f9fa;
+  padding: 4rem 0;
+}
+
+.contact-hr h3 {
+  font-size: 2rem;
+  font-weight: var(--font-semibold);
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.contact-hr p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.contact-hr .contact-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.contact-hr .contact-info i {
+  font-size: 1.2rem;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(30, 79, 122, 0.1);
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.contact-hr .btn-primary {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: var(--font-medium);
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(30, 79, 122, 0.2);
+  transition: all 0.3s ease;
+}
+
+.contact-hr .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(30, 79, 122, 0.3);
+}
+
+/* Contact HR Mobile Responsive */
+@media (max-width: 992px) {
+  .contact-hr {
+    padding: 3rem 0;
+  }
+
+  .contact-hr h3 {
+    font-size: 1.8rem;
+  }
+
+  .contact-hr p {
+    font-size: 1rem;
+  }
+
+  .contact-hr .btn-primary {
+    padding: 0.7rem 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hr {
+    padding: 2.5rem 0;
+  }
+
+  .contact-hr h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-hr p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-hr .contact-info {
+    font-size: 1rem;
+  }
+
+  .contact-hr .btn-primary {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-hr {
+    padding: 2rem 0;
+  }
+
+  .contact-hr h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .contact-hr p {
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    padding: 0 15px;
+  }
+
+  .contact-hr .row .col-md-6 {
+    width: 100%;
+  }
+
+  .contact-hr .contact-info {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .contact-hr .contact-info i {
+    font-size: 1rem;
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+  }
+
+  .contact-hr .btn-primary {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 375px) {
+  .contact-hr h3 {
+    font-size: 1.2rem;
+  }
+
+  .contact-hr p {
+    font-size: 0.85rem;
+  }
+
+  .contact-hr .contact-info {
+    font-size: 0.85rem;
+  }
+
+  .contact-hr .btn-primary {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Machinery Page Styles */
+.machinery-section {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+.machinery-section .section-title {
+  color: var(--primary-color);
+  margin-bottom: 3rem;
+}
+
+/* Stages Container Styles */
+.stages-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.stage-item {
+  padding: 2rem;
+  border-left: 5px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.stage-item:last-child {
+  border-bottom: none;
+}
+
+.stage-item.active {
+  border-left: 5px solid var(--primary-color);
+  background-color: rgba(30, 79, 122, 0.05);
+}
+
+.stage-item h3 {
+  font-size: 1.5rem;
+  font-weight: var(--font-semibold);
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.stage-item p {
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+.stage-item:hover {
+  background-color: rgba(30, 79, 122, 0.03);
+}
+
+/* Machines Container Styles */
+.machines-container {
+  position: relative;
+  min-height: 500px;
+}
+
+.machines-wrapper {
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.machines-wrapper.active {
+  display: flex;
+}
+
+/* Machine Tabs Styles */
+.machine-tabs {
+  border-bottom: 2px solid #eee;
+  margin-bottom: 1.5rem;
+}
+
+.machine-tabs .nav-item {
+  margin-right: 5px;
+}
+
+.machine-tabs .nav-link {
+  border: none;
+  border-radius: 0;
+  color: #6c757d;
+  font-weight: var(--font-medium);
+  padding: 0.8rem 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.machine-tabs .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.machine-tabs .nav-link:hover::after {
+  width: 100%;
+}
+
+.machine-tabs .nav-link.active {
+  color: var(--primary-color);
+  background-color: transparent;
+  border: none;
+}
+
+.machine-tabs .nav-link.active::after {
+  width: 100%;
+}
+
+.machine-tab-content {
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+}
+
+.machine-item {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.machine-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.machine-image-container img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.machine-item:hover .machine-image-container img {
+  transform: scale(1.03);
+}
+
+.machine-overlay {
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  /* height: 100%; */
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  padding: 0.6rem 2rem;
+}
+
+/* .machine-item:hover .machine-overlay {
+  opacity: 0.8;
+} */
+
+.machine-description {
+  color: #fff;
+  text-align: center;
+  max-width: 90%;
+}
+
+.machine-description h5 {
+  font-size: 1.5rem;
+  font-weight: var(--font-semibold);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.machine-description p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .stage-item {
+    padding: 1.5rem;
+  }
+
+  .stage-item h3 {
+    font-size: 1.3rem;
+  }
+
+  .machine-tabs .nav-link {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .machine-description h5 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .machinery-section {
+    padding: 3rem 0;
+  }
+
+  .stages-container {
+    margin-bottom: 2rem;
+  }
+
+  .stage-item {
+    padding: 1.2rem;
+  }
+
+  .stage-item h3 {
+    font-size: 1.2rem;
+  }
+
+  .stage-item p {
+    font-size: 0.9rem;
+  }
+
+  .machine-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-bottom: 1.2rem;
+  }
+
+  .machine-tabs .nav-link {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .machine-description h5 {
+    font-size: 1.2rem;
+  }
+
+  .machine-description p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .machinery-section {
+    padding: 2rem 0;
+  }
+
+  .stage-item {
+    padding: 1rem;
+  }
+
+  .stage-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .stage-item p {
+    font-size: 0.85rem;
+  }
+
+  .machine-tabs .nav-link {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .machine-overlay {
+    padding: 1rem;
+  }
+
+  .machine-description h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .machine-description p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}

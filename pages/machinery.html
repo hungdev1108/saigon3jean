@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Saigon 3 Jeans" />
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machinery - Saigon 3 Jean</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/mobile-drawer.css" />
+  </head>
+  <body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main>
+      <section class="machinery-section py-5">
+        <div class="container">
+          <h2 class="section-title mt-5">
+            APPLICATION OF PRECISE PROGRAMMING, <br />
+            ENSURING CONSISTENCY IN PRODUCTION
+          </h2>
+
+          <div class="row">
+            <!-- Stages Column -->
+            <div class="col-md-5">
+              <div class="stages-container">
+                <div class="stage-item active" data-stage="1">
+                  <h3>STAGE 1</h3>
+                  <p>
+                    Application of precise programming, ensuring consistency in
+                    production
+                  </p>
+                </div>
+                <div class="stage-item" data-stage="2">
+                  <h3>STAGE 2</h3>
+                  <p>
+                    Application of precise programming, ensuring consistency in
+                    production
+                  </p>
+                </div>
+                <div class="stage-item" data-stage="3">
+                  <h3>STAGE 3</h3>
+                  <p>
+                    Application of precise programming, ensuring consistency in
+                    production
+                  </p>
+                </div>
+                <div class="stage-item" data-stage="4">
+                  <h3>STAGE 4</h3>
+                  <p>
+                    Application of precise programming, ensuring consistency in
+                    production
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Machines Column -->
+            <div class="col-md-7">
+              <div class="machines-container">
+                <!-- Stage 1 Machines -->
+                <div class="machines-wrapper stage-1-machines active">
+                  <!-- Machine Tabs -->
+                  <ul
+                    class="nav nav-tabs machine-tabs"
+                    id="stage1MachineTabs"
+                    role="tablist"
+                  >
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link active"
+                        id="lazer-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#lazer-content"
+                        type="button"
+                        role="tab"
+                        aria-controls="lazer-content"
+                        aria-selected="true"
+                      >
+                        LAZER MACHINE
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link"
+                        id="wash-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#wash-content"
+                        type="button"
+                        role="tab"
+                        aria-controls="wash-content"
+                        aria-selected="false"
+                      >
+                        WASH MACHINE
+                      </button>
+                    </li>
+                  </ul>
+
+                  <!-- Machine Content -->
+                  <div
+                    class="tab-content machine-tab-content"
+                    id="stage1MachineContent"
+                  >
+                    <div
+                      class="tab-pane fade show active"
+                      id="lazer-content"
+                      role="tabpanel"
+                      aria-labelledby="lazer-tab"
+                    >
+                      <div class="machine-item">
+                        <div class="machine-image-container">
+                          <img
+                            src="../images/machinery-page/lazer_machine.png"
+                            alt="Máy Lazer"
+                            class="img-fluid"
+                          />
+                          <div class="machine-overlay">
+                            <div class="machine-description">
+                              <h5>DESCRIPTION</h5>
+                              <p>
+                                Lazer machine with advanced technology, helping
+                                to optimize production processes and ensure the
+                                highest quality of products.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="wash-content"
+                      role="tabpanel"
+                      aria-labelledby="wash-tab"
+                    >
+                      <div class="machine-item">
+                        <div class="machine-image-container">
+                          <img
+                            src="../images/machinery-page/wash_machine.png"
+                            alt="Máy Wash"
+                            class="img-fluid"
+                          />
+                          <div class="machine-overlay">
+                            <div class="machine-description">
+                              <h5>DESCRIPTION</h5>
+                              <p>
+                                Industrial wash machine with advanced
+                                technology, helping to optimize production
+                                processes and ensure the highest quality of
+                                products.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stage 2 Machines -->
+                <div class="machines-wrapper stage-2-machines">
+                  <!-- Machine Tabs for Stage 2 will be populated dynamically -->
+                  <ul
+                    class="nav nav-tabs machine-tabs"
+                    id="stage2MachineTabs"
+                    role="tablist"
+                  >
+                    <!-- Will be populated by JS -->
+                  </ul>
+
+                  <!-- Machine Content for Stage 2 -->
+                  <div
+                    class="tab-content machine-tab-content"
+                    id="stage2MachineContent"
+                  >
+                    <!-- Will be populated by JS -->
+                  </div>
+                </div>
+
+                <!-- Stage 3 Machines -->
+                <div class="machines-wrapper stage-3-machines">
+                  <!-- Machine Tabs for Stage 3 will be populated dynamically -->
+                  <ul
+                    class="nav nav-tabs machine-tabs"
+                    id="stage3MachineTabs"
+                    role="tablist"
+                  >
+                    <!-- Will be populated by JS -->
+                  </ul>
+
+                  <!-- Machine Content for Stage 3 -->
+                  <div
+                    class="tab-content machine-tab-content"
+                    id="stage3MachineContent"
+                  >
+                    <!-- Will be populated by JS -->
+                  </div>
+                </div>
+
+                <!-- Stage 4 Machines -->
+                <div class="machines-wrapper stage-4-machines">
+                  <!-- Machine Tabs for Stage 4 will be populated dynamically -->
+                  <ul
+                    class="nav nav-tabs machine-tabs"
+                    id="stage4MachineTabs"
+                    role="tablist"
+                  >
+                    <!-- Will be populated by JS -->
+                  </ul>
+
+                  <!-- Machine Content for Stage 4 -->
+                  <div
+                    class="tab-content machine-tab-content"
+                    id="stage4MachineContent"
+                  >
+                    <!-- Will be populated by JS -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/mobile-drawer.js"></script>
+    <script src="../js/machinery.js"></script>
+  </body>
+</html>
