@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Saigon 3 Jeans" />
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product - Saigon 3 Jean</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/mobile-drawer.css" />
+  </head>
+  <body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main>
+      <section class="product-section py-5">
+        <div class="container">
+          <h2 class="section-title mt-5">PRODUCT</h2>
+          <div class="row g-4 product-row">
+            <!-- DENIM Product -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="product-card position-relative" data-product="denim">
+                <div id="denimCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="../images/product-page/denim_1.png" alt="Denim Products 1" class="img-fluid w-100">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../images/product-page/denim_2.png" alt="Denim Products 2" class="img-fluid w-100">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../images/product-page/denim_3.png" alt="Denim Products 3" class="img-fluid w-100">
+                    </div>
+                  </div>
+                  <div class="product-overlay d-flex align-items-center justify-content-center">
+                    <h2 class="text-white product-title">DENIM</h2>
+                  </div>
+                  <div class="carousel-indicators product-indicators">
+                    <button type="button" data-bs-target="#denimCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#denimCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#denimCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- WOVEN Product -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="product-card position-relative" data-product="woven">
+                <div id="wovenCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="../images/product-page/woven_1.png" alt="Woven Products 1" class="img-fluid w-100">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../images/product-page/woven_2.png" alt="Woven Products 2" class="img-fluid w-100">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../images/product-page/woven_3.png" alt="Woven Products 3" class="img-fluid w-100">
+                    </div>
+                  </div>
+                  <div class="product-overlay d-flex align-items-center justify-content-center">
+                    <h2 class="text-white product-title">WOVEN</h2>
+                  </div>
+                  <div class="carousel-indicators product-indicators">
+                    <button type="button" data-bs-target="#wovenCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#wovenCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#wovenCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- KNIT Product -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="product-card position-relative" data-product="knit">
+                <div id="knitCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="../images/product-page/knit_1.png" alt="Knit Products 1" class="img-fluid w-100">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../images/product-page/knit_2.png" alt="Knit Products 2" class="img-fluid w-100">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../images/product-page/knit_3.png" alt="Knit Products 3" class="img-fluid w-100">
+                    </div>
+                  </div>
+                  <div class="product-overlay d-flex align-items-center justify-content-center">
+                    <h2 class="text-white product-title">KNIT</h2>
+                  </div>
+                  <div class="carousel-indicators product-indicators">
+                    <button type="button" data-bs-target="#knitCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#knitCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#knitCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/mobile-drawer.js"></script>
+    
+    <!-- Carousel Auto-play Script -->
+  
+  </body>
+</html>

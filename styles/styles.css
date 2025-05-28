@@ -3688,3 +3688,615 @@ footer a:hover {
     line-height: 1.4;
   }
 }
+/* ========================================
+   PRODUCT SECTION - RESPONSIVE OPTIMIZED
+   ======================================== */
+
+/* Product Section */
+.product-section {
+  padding: 4rem 0 2rem 0;
+  background-color: #f8f9fa;
+  margin: 0;
+}
+
+/* Section Title */
+.product-section .section-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3rem;
+  margin-top: 0;
+  color: #333;
+  position: relative;
+}
+
+.product-section .section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #007bff;
+  margin: 1rem auto 0;
+}
+
+/* Product Cards */
+.product-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  height: 400px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Product Overlay - Căn giữa hoàn hảo */
+.product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+.product-overlay .product-title,
+.product-overlay h2 {
+  color: white !important;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0 !important;
+  text-align: center !important;
+  line-height: 1.2 !important;
+  position: relative;
+  z-index: 3;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* Carousel Auto-play */
+.carousel.slide[data-bs-ride="carousel"] {
+  animation: none;
+}
+
+.carousel-item {
+  transition: transform 0.6s ease-in-out;
+  height: 100%;
+}
+
+/* Fix carousel interval */
+.carousel[data-bs-interval] {
+  --bs-carousel-transition-duration: 0.6s;
+}
+
+/* Carousel Inner */
+.carousel-inner {
+  border-radius: 12px;
+  height: 100%;
+}
+
+/* Carousel Indicators - Tối ưu hóa */
+.product-card .carousel-indicators,
+.product-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 0;
+}
+
+.product-card .carousel-indicators button,
+.product-indicators button {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+  transition: all 0.3s ease;
+  margin: 0;
+  text-indent: 0;
+  box-sizing: border-box;
+}
+
+.product-card .carousel-indicators button.active,
+.product-indicators button.active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+.product-card .carousel-indicators button:hover,
+.product-indicators button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Container và Grid System */
+.product-section .container {
+  max-width: 1200px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.product-section .row.g-4,
+.product-section .product-row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 1.5rem;
+  margin-bottom: 0;
+}
+
+.product-section .row.g-4 > *,
+.product-section .product-row > * {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Loại bỏ khoảng trắng dư */
+.product-section .col-lg-4,
+.product-section .col-md-6, 
+.product-section .col-sm-12 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* ========================================
+/* ========================================
+   PRODUCT DETAILS PAGE - RESPONSIVE CSS (IMPROVED)
+   ======================================== */
+
+/* Product Details Section */
+.product-details-section {
+  padding: 5rem 0 3rem 0;
+  background-color: #f8f9fa;
+}
+
+/* Product Header */
+.product-header {
+  margin-bottom: 3rem;
+}
+
+.product-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.product-description {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Product Image */
+.product-image-container {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+  transform: scale(1.02);
+}
+
+/* Features List */
+.product-features {
+  margin-bottom: 4rem;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.features-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.features-list li:hover {
+  transform: translateX(5px);
+}
+
+.feature-icon {
+  color: #1e4f7a;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.features-list li span {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Applications Section - IMPROVED */
+.applications-section {
+  margin-bottom: 3rem;
+}
+
+.accordion {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  border: none;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.accordion-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+}
+
+.accordion-header {
+  margin-bottom: 0;
+}
+
+/* IMPROVED ACCORDION BUTTON - Compact & Modern */
+.accordion-button {
+  background: linear-gradient(135deg, #1e4f7a 0%, #1e4f7a 100%);
+  border: none;
+  padding: 0.9rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: white;
+  box-shadow: none;
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+}
+
+.accordion-button:not(.collapsed) {
+  background: linear-gradient(135deg, #1e4f7a 0%, #1e4f7a 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.3);
+}
+
+.accordion-button.collapsed {
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+  color: white;
+}
+
+.accordion-button.collapsed:hover {
+  background: linear-gradient(135deg, #1e4f7a 0%, #1e4f7a 100%);
+  transform: translateY(-1px);
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  border: none;
+  outline: none;
+}
+
+.accordion-button::after {
+  display: none;
+}
+
+/* IMPROVED ACCORDION ICON */
+.accordion-icon {
+  margin-right: 0.8rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.8rem;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accordion-button:not(.collapsed) .accordion-icon {
+  transform: rotate(45deg);
+}
+
+.accordion-button.collapsed .accordion-icon {
+  transform: rotate(0deg);
+}
+
+/* ACCORDION BODY - Improved */
+.accordion-body {
+  padding: 1.8rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.accordion-body h4 {
+  color: #1e293b;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.accordion-body p {
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.accordion-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.accordion-body ul li {
+  padding: 0.4rem 0;
+  color: #475569;
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.accordion-body ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.application-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Back to Products Button */
+.back-to-products {
+  margin-top: 3rem;
+}
+
+.btn-outline-primary {
+  border: 2px solid #1e4f7a;
+  color: #1e4f7a;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-size: small;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1e4f7a;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  border-color: #1e4f7a;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Tablet (768px and down) */
+@media (max-width: 768px) {
+  .product-details-section {
+    padding: 3rem 0 2rem 0;
+  }
+
+  .product-title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-description {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .product-image {
+    height: 300px;
+  }
+
+  /* Compact accordion for tablet */
+  .accordion-button {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    min-height: 45px;
+  }
+
+  .accordion-icon {
+    margin-right: 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .accordion-body {
+    padding: 1.4rem;
+  }
+
+  .accordion-body .row {
+    flex-direction: column-reverse;
+  }
+
+  .accordion-body .col-lg-6:first-child {
+    margin-top: 1.5rem;
+  }
+
+  .application-image {
+    height: 180px;
+    margin-bottom: 1rem;
+  }
+
+  .features-list li {
+    padding: 0.8rem;
+  }
+
+  .feature-icon {
+    display: none; /* Ẩn icon trên tablet */
+  }
+  
+  .features-list li {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* Mobile (576px and down) */
+@media (max-width: 576px) {
+  .product-details-section {
+    padding: 2rem 0 1.5rem 0;
+  }
+
+  .product-title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
+  .product-description {
+    font-size: 0.95rem;
+  }
+
+  .product-image {
+    height: 250px;
+  }
+
+  /* Extra compact for mobile */
+  .accordion-button {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+    min-height: 42px;
+  }
+
+  .accordion-icon {
+    margin-right: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .accordion-body {
+    padding: 1.2rem;
+  }
+
+  .accordion-body h4 {
+    font-size: 1rem;
+  }
+
+  .accordion-body p {
+    font-size: 0.9rem;
+  }
+
+  .features-list li {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 0.5rem;
+    justify-content: center;
+  }
+
+  .feature-icon {
+    display: none; /* Ẩn icon trên mobile */
+  }
+
+  .btn-outline-primary {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile Small (400px and down) */
+@media (max-width: 400px) {
+  .product-title {
+    font-size: 1.5rem;
+  }
+
+  .product-image {
+    height: 200px;
+  }
+
+  .accordion-button {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    min-height: 40px;
+  }
+
+  .accordion-icon {
+    font-size: 0.65rem;
+    margin-right: 0.4rem;
+  }
+
+  .accordion-body {
+    padding: 1rem;
+  }
+}
+
+/* Hover Effects for Desktop */
+@media (min-width: 769px) {
+  .features-list li:hover .feature-icon {
+    transform: scale(1.1);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .back-to-products,
+  .accordion-button {
+    display: none;
+  }
+  
+  .accordion-collapse {
+    display: block !important;
+  }
+  
+  .product-details-section {
+    padding: 1rem 0;
+  }
+}

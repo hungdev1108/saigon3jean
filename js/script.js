@@ -383,4 +383,80 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     document.head.appendChild(validationStyle);
   }
+  
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize all carousels with auto-play
+  const carousels = document.querySelectorAll('.carousel');
+  carousels.forEach(function(carousel) {
+    new bootstrap.Carousel(carousel, {
+      interval: parseInt(carousel.getAttribute('data-bs-interval')) || 3000,
+      ride: 'carousel',
+      pause: 'hover',
+      wrap: true
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Accordion icon animation
+  const accordionButtons = document.querySelectorAll('.accordion-button');
+  
+  accordionButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const icon = this.querySelector('.accordion-icon');
+      const isCollapsed = this.classList.contains('collapsed');
+      
+      if (isCollapsed) {
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        icon.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
+
+  // Initialize first accordion icon
+  const firstIcon = document.querySelector('.accordion-button:not(.collapsed) .accordion-icon');
+  if (firstIcon) {
+    firstIcon.style.transform = 'rotate(45deg)';
+  }
+});
+document.querySelectorAll('.product-card').forEach(card => {
+  card.addEventListener('click', function() {
+    const productType = this.dataset.product;
+    window.location.href = `product_details.html?product=${productType}`;
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Carousel auto-play code (đã có)
+  const carousels = document.querySelectorAll('.carousel');
+  carousels.forEach(function(carousel) {
+    new bootstrap.Carousel(carousel, {
+      interval: parseInt(carousel.getAttribute('data-bs-interval')) || 3000,
+      ride: 'carousel',
+      pause: 'hover',
+      wrap: true
+    });
+  });
+
+  // ===== THÊM CODE NÀY ===== 
+  // Product card click handlers
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      // Prevent click if clicking on carousel controls
+      if (e.target.closest('.carousel-indicators') || e.target.closest('.carousel-control-prev') || e.target.closest('.carousel-control-next')) {
+        return;
+      }
+      
+      const productType = this.dataset.product;
+      if (productType) {
+        window.location.href = `product_details.html?product=${productType}`;
+      }
+    });
+    
+    // Add cursor pointer and hover effect
+    card.style.cursor = 'pointer';
+  });
 });
