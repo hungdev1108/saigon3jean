@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Thêm hiệu ứng Animate on Scroll cho các phần tử
   const animateElements = document.querySelectorAll(
-    ".card, .section-title, .news-item, .news-list, .contact-box, .work-with-us-box"
+    ".card, .section-title, .news-item, .news-list, .contact-box, .work-with-us-box, .content-animate"
   );
 
   const checkVisible = () => {
@@ -190,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         .animate {
             animation: fadeInUp 0.6s ease forwards;
+            z-index:3
         }
         
         @keyframes fadeInUp {
@@ -383,4 +384,42 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     document.head.appendChild(validationStyle);
   }
+
+
+  // eco-friendly
+  const dots = document.querySelectorAll("#eco-friendly .left-select-item .dot");
+  const items = document.querySelectorAll("#eco-friendly .features-right .right-item");
+  const itemsline = document.querySelectorAll("#eco-friendly .features-right .right-item .line");
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      // Xóa lớp active khỏi tất cả dots và right-items
+      dots.forEach(d => d.classList.remove("active"));
+      items.forEach(i => i.classList.remove("active"));
+      itemsline.forEach(i => i.classList.remove("active"));
+
+      // Thêm active cho dot và right-item tương ứng
+      dot.classList.add("active");
+      if (items[index]) {
+        items[index].classList.add("active");
+        itemsline[index].classList.add("active");
+      }
+    });
+  });
+
+  items.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      // Xóa lớp active khỏi tất cả dots và right-items
+      dots.forEach(d => d.classList.remove("active"));
+      items.forEach(i => i.classList.remove("active"));
+      itemsline.forEach(i => i.classList.remove("active"));
+
+      // Thêm active cho dot và right-item tương ứng
+      item.classList.add("active");
+      if (dots[index]) {
+        dots[index].classList.add("active");
+        itemsline[index].classList.add("active");
+      }
+    });
+  });
 });
