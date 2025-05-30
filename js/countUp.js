@@ -1,6 +1,6 @@
 /**
  * CountUp Animation Script
- * Tạo hiệu ứng đếm số từ 0 đến target khi scroll vào view
+ * Tạo hiệu ứng đếm số từ 0 đến target khi scroll vào view (có thể gọi từ bên ngoài)
  */
 
 class CountUpAnimation {
