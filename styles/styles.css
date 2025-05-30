@@ -4363,7 +4363,6 @@ footer a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-
   pointer-events: none;
 }
 
@@ -4394,30 +4393,29 @@ footer a:hover {
   margin: 0 auto;
   max-width: 1400px;
   padding: 3rem 0;
-  transition: height 0.6s ease-in-out; /* Add smooth height transition */
+  transition: height 0.3s linear; /* Đơn giản hóa transition */
 }
 
 .milestones-carousel .slick-list {
   overflow: visible;
-  padding-bottom: 20px; /* Add padding to prevent cutoff during animation */
+  padding-bottom: 20px;
 }
 
 .milestones-carousel .slick-slide {
   padding: 0 20px;
   outline: none;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  transform-origin: center;
-  height: auto; /* Ensure consistent height */
+  transition: all 0.3s linear; /* Giảm thời gian và đơn giản hóa easing */
+  height: auto;
 }
 
 /* Side items - partially visible */
 .milestones-carousel .slick-slide:not(.slick-center) {
-  transform: scale(0.85) translateY(15px);
+  transform: scale(0.9) translateY(10px); /* Giảm mức độ transform */
   opacity: 0.8;
 }
 
 .milestones-carousel .slick-slide:not(.slick-center):hover {
-  transform: scale(0.9) translateY(10px);
+  transform: scale(0.95) translateY(5px); /* Giảm mức độ transform khi hover */
   opacity: 0.9;
   cursor: pointer;
 }
@@ -4426,7 +4424,6 @@ footer a:hover {
 .milestones-carousel .slick-center {
   transform: scale(1) translateY(0);
   opacity: 1;
-  filter: blur(0);
   z-index: 10;
 }
 
@@ -4437,22 +4434,22 @@ footer a:hover {
   padding: 2.5rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-  transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1); /* Match easing with JS */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Đơn giản hóa shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Chỉ transition các thuộc tính cần thiết */
   border: 3px solid transparent;
   min-height: 450px;
-  height: 450px; /* Fixed height for all items */
+  height: 450px;
   cursor: pointer;
-  backdrop-filter: blur(10px);
+  /* Loại bỏ backdrop-filter vì gây lag */
   display: flex;
   flex-direction: column;
-  transform: translateZ(0); /* Force hardware acceleration */
-  will-change: transform, box-shadow, border-color; /* Optimize animations */
+  /* Loại bỏ transform 3D vì không cần thiết */
 }
 
 .timeline-item .timeline-date {
   display: none;
 }
+
 .timeline-year {
   position: absolute;
   top: -40px;
@@ -4478,121 +4475,36 @@ footer a:hover {
 .slick-center .timeline-year {
   background: linear-gradient(135deg, #dc3545, #c82333);
   color: white;
-  transform: translateX(-50%) scale(1.25);
-  box-shadow: 0 15px 40px rgba(220, 53, 69, 0.4),
-    0 0 0 6px rgba(220, 53, 69, 0.1);
+  transform: translateX(-50%) scale(1.2); /* Giảm mức độ scale */
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4); /* Đơn giản hóa shadow */
   border-color: rgba(255, 255, 255, 0.95);
 }
-.slick-center .timeline-year::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, transparent, rgba(220, 53, 69, 0.2));
-  animation: pulseGlow 2.5s ease-in-out infinite;
+
+/* Loại bỏ pseudo elements với animation */
+.slick-center .timeline-year::before,
+.slick-center .timeline-year::after,
+.timeline-slide:hover .timeline-year::before,
+.timeline-slide:hover .timeline-year::after {
+  display: none;
 }
-.slick-center .timeline-year::after {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  right: -12px;
-  bottom: -12px;
-  border-radius: 50%;
-  border: 3px solid rgba(220, 53, 69, 0.3);
-  animation: pulseRing 3s infinite;
-}
+
 .timeline-slide {
   position: relative;
-  padding-top: 60px; /* Tạo space cho năm ở trên */
+  padding-top: 60px;
 }
-.timeline-item {
-  background: white;
-  border-radius: 25px;
-  padding: 2.5rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  border: 3px solid transparent;
-  min-height: 400px;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  margin-top: 20px; /* Space cho năm */
-}
+
 .timeline-slide:hover .timeline-year {
   background: linear-gradient(135deg, #dc3545, #c82333);
   color: white;
-  transform: translateX(-50%) scale(1.15);
-  box-shadow: 0 10px 30px rgba(220, 53, 69, 0.4);
+  transform: translateX(-50%) scale(1.1); /* Giảm mức độ scale */
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4); /* Đơn giản hóa shadow */
   border-color: rgba(255, 255, 255, 0.95);
 }
-.timeline-slide:hover .timeline-year::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, transparent, rgba(220, 53, 69, 0.2));
-  animation: pulseGlow 2.5s ease-in-out infinite;
-}
-.timeline-slide:hover .timeline-year::after {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  right: -12px;
-  bottom: -12px;
-  border-radius: 50%;
-  border: 3px solid rgba(220, 53, 69, 0.3);
-  animation: pulseRing 3s infinite;
-}
-/* Responsive cho timeline year */
-@media (max-width: 768px) {
-  .timeline-year {
-    width: 65px;
-    height: 65px;
-    font-size: 1.1rem;
-    top: -35px;
-  }
 
-  .timeline-slide {
-    padding-top: 50px;
-  }
-
-  .timeline-item {
-    min-height: 350px;
-    height: 350px; /* Fixed height for mobile */
-    margin-top: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .timeline-year {
-    width: 55px;
-    height: 55px;
-    font-size: 1rem;
-    top: -30px;
-  }
-
-  .timeline-slide {
-    padding-top: 40px;
-  }
-  
-  .timeline-item {
-    min-height: 320px;
-    height: 320px; /* Fixed height for small mobile */
-  }
-}
 .slick-center .timeline-item {
-  box-shadow: 0 15px 40px rgba(220, 53, 69, 0.2);
+  box-shadow: 0 8px 20px rgba(220, 53, 69, 0.2); /* Đơn giản hóa shadow */
   border: 2px solid rgba(220, 53, 69, 0.3);
-  transform: translateY(-10px);
+  transform: translateY(-5px); /* Giảm mức độ transform */
 }
 
 .timeline-item::before {
@@ -4602,13 +4514,9 @@ footer a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(255, 255, 255, 0.7)
-  );
+  background: white; /* Đơn giản hóa background */
   z-index: -1;
-  transition: all 0.4s ease;
+  transition: background 0.3s ease;
 }
 
 .timeline-item::after {
@@ -4617,19 +4525,18 @@ footer a:hover {
   top: 0;
   left: 0;
   right: 0;
-  height: 6px;
-  background: linear-gradient(135deg, #dc3545, #c82333);
+  height: 4px; /* Giảm kích thước */
+  background: #dc3545; /* Đơn giản hóa gradient */
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.4s ease;
 }
 
 /* Center item styles */
 .slick-center .timeline-item {
-  box-shadow: 0 25px 80px rgba(220, 53, 69, 0.15),
-    0 10px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.15); /* Đơn giản hóa shadow */
   border-color: rgba(220, 53, 69, 0.3);
-  background: linear-gradient(135deg, #fff 0%, #fefefe 100%);
+  background: white; /* Đơn giản hóa background gradient */
 }
 
 .slick-center .timeline-item::after {
@@ -4637,27 +4544,23 @@ footer a:hover {
 }
 
 .slick-center .timeline-item::before {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95),
-    rgba(255, 255, 255, 0.85)
-  );
+  background: white; /* Đơn giản hóa background */
 }
 
 /* Hover effects for non-center items */
 .slick-slide:not(.slick-center) .timeline-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(220, 53, 69, 0.1);
+  transform: translateY(-5px); /* Giảm mức độ transform */
+  box-shadow: 0 8px 20px rgba(220, 53, 69, 0.1); /* Đơn giản hóa shadow */
   border-color: rgba(220, 53, 69, 0.2);
 }
 
 .slick-slide:not(.slick-center) .timeline-item:hover::after {
-  transform: scaleX(1.5);
+  transform: scaleX(1);
 }
 
 /* Timeline Date */
 .timeline-date {
-  background: linear-gradient(135deg, #f1f3f4, #e8eaed);
+  background: #f1f3f4; /* Đơn giản hóa gradient */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -4669,54 +4572,30 @@ footer a:hover {
   font-size: 1.3rem;
   color: #5f6368;
   position: relative;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Đơn giản hóa shadow */
   border: 4px solid rgba(255, 255, 255, 0.8);
 }
 
-.timeline-date::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, transparent, rgba(220, 53, 69, 0.1));
-  opacity: 0;
-  transition: all 0.4s ease;
+/* Loại bỏ pseudo elements với animation */
+.timeline-date::before,
+.slick-center .timeline-date::before,
+.slick-center .timeline-date::after {
+  display: none;
 }
 
 .slick-center .timeline-date {
-  background: linear-gradient(135deg, #dc3545, #c82333);
+  background: #dc3545; /* Đơn giản hóa gradient */
   color: white;
-  box-shadow: 0 20px 50px rgba(220, 53, 69, 0.4),
-    0 0 0 8px rgba(220, 53, 69, 0.1);
-  transform: scale(1.15);
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4); /* Đơn giản hóa shadow */
+  transform: scale(1.1); /* Giảm mức độ scale */
   border-color: rgba(255, 255, 255, 0.95);
-}
-
-.slick-center .timeline-date::before {
-  opacity: 1;
-  animation: pulseGlow 2.5s ease-in-out infinite;
-}
-
-.slick-center .timeline-date::after {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  right: -12px;
-  bottom: -12px;
-  border-radius: 50%;
-  border: 3px solid rgba(220, 53, 69, 0.2);
-  animation: pulseRing 3s infinite;
 }
 
 /* Timeline Content */
 .timeline-content {
   text-align: center;
-  transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1); /* Match easing with JS */
+  transition: transform 0.4s ease; /* Chỉ transition transform */
 }
 
 .timeline-content img {
@@ -4725,23 +4604,19 @@ footer a:hover {
   object-fit: cover;
   border-radius: 18px;
   margin-bottom: 1.8rem;
-  transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1); /* Match easing with JS */
-  filter: brightness(0.85) saturate(0.9);
+  transition: transform 0.4s ease; /* Chỉ transition transform */
+  /* Loại bỏ filter vì gây lag */
   position: relative;
   overflow: hidden;
-  transform: translateZ(0); /* Force hardware acceleration */
-  will-change: transform, filter; /* Optimize animations */
 }
 
 .slick-center .timeline-content img {
-  filter: brightness(1) saturate(1.1);
-  transform: scale(1.03);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02); /* Giảm mức độ scale */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Đơn giản hóa shadow */
 }
 
 .slick-slide:not(.slick-center) .timeline-item:hover .timeline-content img {
-  /* filter: brightness(0.95) saturate(1); */
-  transform: scale(1.02);
+  transform: scale(1.01); /* Giảm mức độ scale */
 }
 
 .milestone-description {
@@ -4756,15 +4631,14 @@ footer a:hover {
   color: #2c3e50;
   margin-bottom: 1.2rem;
   font-size: 1.5rem;
-  transition: all 0.4s ease;
+  transition: color 0.3s ease; /* Chỉ transition color */
   letter-spacing: -0.5px;
 }
 
 .slick-center .milestone-description h5 {
   color: #dc3545;
-  transform: scale(1.05); /* Scale text instead of changing font size */
   font-weight: 800;
-  text-shadow: 0 2px 10px rgba(220, 53, 69, 0.2);
+  /* Loại bỏ transform và text-shadow */
 }
 
 .milestone-description p {
@@ -4772,13 +4646,13 @@ footer a:hover {
   color: #6c757d;
   line-height: 1.7;
   margin: 0;
-  transition: all 0.4s ease; /* Add transition for text */
+  transition: color 0.3s ease; /* Chỉ transition color */
 }
 
 .slick-center .milestone-description p {
   color: #495057;
   font-weight: 500;
-  font-size: 1.15rem;
+  /* Loại bỏ thay đổi font-size */
 }
 
 /* Custom Arrows */
@@ -4788,9 +4662,9 @@ footer a:hover {
   height: 60px;
   background: white !important;
   border-radius: 50%;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Đơn giản hóa shadow */
   z-index: 100;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.3s ease;
   border: 2px solid rgba(220, 53, 69, 0.1);
 }
 
@@ -4804,9 +4678,9 @@ footer a:hover {
 
 .milestones-carousel .slick-prev:hover,
 .milestones-carousel .slick-next:hover {
-  background: linear-gradient(135deg, #dc3545, #c82333) !important;
-  transform: scale(1.15);
-  box-shadow: 0 12px 40px rgba(220, 53, 69, 0.3);
+  background: #dc3545 !important; /* Đơn giản hóa gradient */
+  transform: scale(1.05); /* Giảm mức độ scale */
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3); /* Đơn giản hóa shadow */
   border-color: rgba(220, 53, 69, 0.3);
 }
 
@@ -4837,7 +4711,7 @@ footer a:hover {
   height: 16px;
   border-radius: 50%;
   background: #ddd;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   border: 2px solid transparent;
 }
 
@@ -4848,13 +4722,13 @@ footer a:hover {
   border-radius: 50%;
   background: #ddd;
   opacity: 1;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .milestones-carousel .slick-dots li.slick-active button {
   background: #dc3545;
-  transform: scale(1.3);
-  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+  transform: scale(1.1); /* Giảm mức độ scale */
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3); /* Đơn giản hóa shadow */
   border-color: rgba(220, 53, 69, 0.2);
 }
 
@@ -4864,54 +4738,36 @@ footer a:hover {
 
 .milestones-carousel .slick-dots li:hover button:before {
   background: #dc3545;
-  transform: scale(1.1);
 }
 
-/* Click Ripple Effect */
+/* Loại bỏ Click Ripple Effect */
 .click-ripple {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(220, 53, 69, 0.4) 0%,
-    rgba(220, 53, 69, 0.1) 70%,
-    transparent 100%
-  );
-  transform: scale(0);
-  animation: rippleEffect 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  pointer-events: none;
-  z-index: 999;
+  display: none;
 }
 
-/* Animations */
+/* Loại bỏ hầu hết animations */
 @keyframes pulseGlow {
   0%,
   100% {
-    transform: scale(1);
     opacity: 1;
   }
   50% {
-    transform: scale(1.08);
     opacity: 0.8;
   }
 }
 
 @keyframes pulseRing {
   0% {
-    transform: scale(1);
-    opacity: 1;
+    opacity: 0.5;
   }
   100% {
-    transform: scale(1.5);
     opacity: 0;
   }
 }
 
-@keyframes rippleEffect {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
+/* Prevent clicks during transitions */
+.milestones-carousel .slick-slide.is-transitioning {
+  pointer-events: none;
 }
 
 /* Responsive Design */
@@ -4922,30 +4778,138 @@ footer a:hover {
   .milestones-carousel .slick-next {
     right: -20px;
   }
+
+  .hero-content {
+    padding: 0 1.5rem;
+  }
+
+  .hero-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .timeline-item {
+    min-height: 420px;
+    height: 420px;
+    padding: 2rem;
+  }
+
+  .message-content {
+    padding: 0 1rem;
+  }
+
+  .value-box {
+    padding: 1.5rem !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    height: 80vh;
+    min-height: 500px;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .milestones-section .section-title h2 {
+    font-size: 2.5rem;
+  }
+
+  .timeline-item {
+    min-height: 400px;
+    height: 400px;
+  }
+
+  .timeline-year {
+    width: 65px;
+    height: 65px;
+    font-size: 1.1rem;
+  }
+
+  .message-section {
+    padding: 3rem 0;
+  }
+
+  .vision-mission-section {
+    padding: 3rem 0;
+  }
+
+  .core-values-section {
+    padding: 3rem 0;
+  }
+
+  .ceo-photo {
+    height: 250px;
+  }
+
+  .ceo-placeholder {
+    height: 250px;
+  }
 }
 
 @media (max-width: 768px) {
+  .hero-section {
+    height: 70vh;
+    min-height: 400px;
+  }
+
+  .hero-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .milestones-carousel {
+    padding: 0.5rem 0;
+  }
+
   .milestones-section {
     padding: 3rem 0;
   }
 
   .milestones-section .section-title h2 {
     font-size: 2.2rem;
+    margin-bottom: 1rem;
   }
 
   .timeline-item {
     padding: 2rem;
     min-height: 380px;
+    height: 380px;
   }
 
-  .timeline-date {
-    width: 75px;
-    height: 75px;
-    font-size: 1.15rem;
+  .timeline-year {
+    width: 65px;
+    height: 65px;
+    font-size: 1.1rem;
+    top: -35px;
+  }
+
+  .timeline-slide {
+    padding-top: 50px;
   }
 
   .timeline-content img {
     height: 160px;
+    margin-bottom: 1.5rem;
+  }
+
+  .milestone-description h5 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .milestone-description p {
+    font-size: 1rem;
   }
 
   .milestones-carousel .slick-prev,
@@ -4955,40 +4919,383 @@ footer a:hover {
     display: none !important;
   }
 
+  .milestones-carousel .slick-slide {
+    padding: 0 5px;
+  }
+
   .milestones-carousel .slick-slide:not(.slick-center) {
-    transform: scale(0.85) translateY(20px);
-    opacity: 0.5;
+    transform: scale(0.9) translateY(10px);
+    opacity: 0.7;
+  }
+
+  .message-section {
+    padding: 3rem 0;
+  }
+
+  .message-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .message-section p {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .ceo-photo {
+    height: 200px;
+    margin-bottom: 1rem;
+  }
+
+  .ceo-placeholder {
+    height: 200px;
+  }
+
+  .vision-mission-section {
+    padding: 3rem 0;
+  }
+
+  .vision-box,
+  .mission-box {
+    margin-bottom: 2rem;
+    padding: 2rem !important;
+  }
+
+  .vision-box h3,
+  .mission-box h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .vision-box i,
+  .mission-box i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .vision-box p,
+  .mission-box p {
+    font-size: 0.95rem;
+  }
+
+  .core-values-section {
+    padding: 3rem 0;
+  }
+
+  .core-values-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .value-box {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem !important;
+  }
+
+  .value-box h4 {
+    font-size: 1rem;
+  }
+
+  .value-box i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .value-box p {
+    font-size: 0.9rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
+  .hero-section {
+    height: 60vh;
+    min-height: 350px;
+  }
+
+  .hero-content {
+    padding: 0 1rem;
+  }
+
+  .hero-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .milestones-section {
+    padding: 2rem 0;
+  }
+
+  .milestones-section .section-title h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
   .milestones-carousel .slick-slide {
-    padding: 0 15px;
+    padding: 0 10px;
   }
 
   .timeline-item {
     padding: 1.5rem;
     min-height: 320px;
+    height: 320px;
   }
 
-  .timeline-date {
-    width: 65px;
-    height: 65px;
+  .timeline-year {
+    width: 60px;
+    height: 60px;
     font-size: 1rem;
+    top: -30px;
   }
 
-  .milestone-description h5 {
-    font-size: 1.3rem;
-  }
-
-  .milestone-description p {
-    font-size: 1rem;
+  .timeline-slide {
+    padding-top: 45px;
   }
 
   .timeline-content img {
     height: 140px;
+    margin-bottom: 1rem;
+  }
+
+  .milestone-description h5 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .milestone-description p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .message-section {
+    padding: 2rem 0;
+  }
+
+  .message-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .message-section p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .ceo-photo {
+    height: 180px;
+    margin-bottom: 0.8rem;
+  }
+
+  .ceo-placeholder {
+    height: 180px;
+  }
+
+  .ceo-title {
+    font-size: 1rem;
+  }
+
+  .vision-mission-section {
+    padding: 2rem 0;
+  }
+
+  .vision-box,
+  .mission-box {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem !important;
+  }
+
+  .vision-box h3,
+  .mission-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .vision-box i,
+  .mission-box i {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .vision-box p,
+  .mission-box p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .core-values-section {
+    padding: 2rem 0;
+  }
+
+  .core-values-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .value-box {
+    margin-bottom: 1rem;
+    padding: 1.2rem !important;
+  }
+
+  .value-box h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .value-box i {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .value-box p {
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
 }
+
+@media (max-width: 480px) {
+  .hero-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .hero-content p {
+    font-size: 0.85rem;
+  }
+
+  .milestones-section .section-title h2 {
+    font-size: 1.6rem;
+  }
+
+  .timeline-item {
+    padding: 1.2rem;
+    min-height: 300px;
+    height: 300px;
+  }
+
+  .timeline-year {
+    width: 55px;
+    height: 55px;
+    font-size: 0.9rem;
+    top: -28px;
+  }
+
+  .timeline-slide {
+    padding-top: 40px;
+  }
+
+  .timeline-content img {
+    height: 120px;
+  }
+
+  .milestone-description h5 {
+    font-size: 1.1rem;
+  }
+
+  .milestone-description p {
+    font-size: 0.85rem;
+  }
+
+  .message-section h2,
+  .core-values-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .vision-box h3,
+  .mission-box h3 {
+    font-size: 1.1rem;
+  }
+
+  .value-box h4 {
+    font-size: 0.9rem;
+  }
+
+  .value-box i {
+    font-size: 1.6rem;
+  }
+
+  .value-box p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small devices (landscape phones) */
+@media (max-width: 375px) {
+  .hero-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.8rem;
+  }
+
+  .milestones-section .section-title h2 {
+    font-size: 1.4rem;
+  }
+
+  .timeline-item {
+    padding: 1rem;
+    min-height: 280px;
+    height: 280px;
+  }
+
+  .timeline-year {
+    width: 50px;
+    height: 50px;
+    font-size: 0.85rem;
+    top: -25px;
+  }
+
+  .timeline-slide {
+    padding-top: 35px;
+  }
+
+  .timeline-content img {
+    height: 100px;
+  }
+
+  .milestone-description h5 {
+    font-size: 1rem;
+  }
+
+  .milestone-description p {
+    font-size: 0.8rem;
+  }
+
+  .message-section h2,
+  .core-values-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .vision-box,
+  .mission-box {
+    padding: 1.2rem !important;
+  }
+
+  .vision-box h3,
+  .mission-box h3 {
+    font-size: 1rem;
+  }
+
+  .value-box {
+    padding: 1rem !important;
+  }
+
+  .value-box h4 {
+    font-size: 0.85rem;
+  }
+
+  .value-box i {
+    font-size: 1.4rem;
+  }
+
+  .value-box p {
+    font-size: 0.75rem;
+  }
+}
+
 /* Message Section */
 .message-section {
   padding: 4rem 0;
@@ -5124,549 +5431,6 @@ footer a:hover {
   margin: 0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero-content h2 {
-    font-size: 2rem;
-  }
+/* Responsive Design for Overview page */
 
-  .hero-content p {
-    font-size: 1rem;
-  }
-
-  .timeline {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .timeline::before {
-    display: none;
-  }
-
-  .timeline-item {
-    max-width: 100%;
-  }
-
-  .vision-box,
-  .mission-box {
-    margin-bottom: 2rem;
-  }
-}
-@media (max-width: 768px) {
-  .timeline {
-    flex-direction: column;
-    gap: 3rem;
-    align-items: center;
-  }
-
-  .timeline::before {
-    display: none;
-  }
-
-  .timeline-item {
-    max-width: 100%;
-    transform: scale(1);
-  }
-
-  .timeline-item.active {
-    transform: scale(1.05);
-  }
-}
-
-#automation {
-  padding-top: 100px;
-  font-family: Inter;
-  background: #f8f9fa;
-  padding-bottom: 50px;
-
-  .slider-wrapper {
-    width: 100%;
-    margin: auto;
-    text-align: center;
-    /* padding: 20px 90px 40px 90px; */
-  }
-
-  .slider-image {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 32px;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.2s forwards;
-  }
-
-  .slider-image .image-box {
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    padding: 20px 10px;
-  }
-
-  .slider-image .slick-list {
-    padding: 0 20px !important;
-  }
-
-  .slider-image .image-box img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    flex-shrink: 0;
-    aspect-ratio: 561.81 / 375;
-    border-radius: 20px;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    filter: brightness(0.85) contrast(1.05);
-  }
-
-  .image-box.slick-slide {
-    transform: scale(0.85);
-    opacity: 0.5;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .image-box.slick-center {
-    transform: scale(1.15);
-    opacity: 1;
-    z-index: 10;
-    position: relative;
-  }
-
-  .image-box.slick-center img {
-    filter: brightness(1) contrast(1.1);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  }
-
-  .image-box.slick-center:hover {
-    transform: scale(1.2);
-  }
-
-  .image-box.slick-slide:not(.slick-center):hover {
-    transform: scale(0.9);
-    opacity: 0.7;
-  }
-
-  .content-container {
-    position: relative;
-  }
-
-  .arrow::before {
-    content: "";
-    display: block;
-    top: -15px;
-    left: 49%;
-    width: 0;
-    height: 0;
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-    border-bottom: 16px solid rgb(255, 255, 255);
-    position: absolute;
-  }
-
-  .slider-content {
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 34px 30px 30px;
-    display: flex;
-  }
-
-  .content-item {
-    width: calc(100% / 3);
-    text-align: left;
-    margin: 0 20px;
-  }
-
-  .content-item h3 {
-    font-size: 20px;
-    font-family: Inter;
-    font-weight: 700;
-    color: #494949;
-    text-transform: uppercase;
-    margin: 0;
-    min-height: 60px;
-    display: flex;
-    align-items: flex-start;
-  }
-
-  .dash {
-    width: 171.538px;
-    height: 1.429px;
-    background: rgba(73, 73, 73, 0.3);
-    margin: 16px 0;
-  }
-
-  .content-item p {
-    font-family: Inter;
-    font-size: 20px;
-    font-weight: 400;
-    color: #494949;
-    margin: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  #automation .slider-wrapper {
-    width: 100%;
-    text-align: center;
-    padding: unset !important;
-  }
-
-  #automation .arrow::before {
-    display: none;
-    visibility: hidden;
-  }
-
-  #automation .slider-image .image-box img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover !important;
-    flex-shrink: 0;
-    aspect-ratio: 561.81 / 375;
-    border-radius: 20px;
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    filter: 0;
-  }
-
-  #automation .image-box.slick-slide {
-    transform: scale(1) !important;
-    opacity: 1 !important;
-    filter: blur(0);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-}
-
-@media (max-width: 576px) {
-  #automation .slider-wrapper {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-/* Tablet responsive - màn hình trung bình */
-@media (max-width: 1024px) {
-  #automation {
-    padding-top: 80px;
-    padding-bottom: 40px;
-  }
-
-  #automation .slider-content {
-    padding: 24px 20px 20px;
-  }
-
-  #automation .content-item {
-    margin: 0 15px;
-  }
-
-  #automation .content-item h3 {
-    font-size: 18px;
-    min-height: 50px;
-  }
-
-  #automation .content-item p {
-    font-size: 18px;
-  }
-
-  #automation .dash {
-    width: 130px;
-    margin: 12px 0;
-  }
-}
-
-/* Tablet nhỏ và mobile landscape */
-@media (max-width: 768px) {
-  #automation {
-    padding-top: 60px;
-    padding-bottom: 30px;
-  }
-
-  #automation .slider-wrapper {
-    width: 100%;
-    text-align: center;
-    padding: 0 15px !important;
-  }
-
-  #automation .slider-image {
-    margin-bottom: 20px;
-  }
-
-  #automation .slider-image .image-box {
-    padding: 10px 5px;
-  }
-
-  #automation .slider-image .image-box img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover !important;
-    border-radius: 15px;
-    filter: brightness(1) contrast(1);
-  }
-
-  #automation .image-box.slick-slide {
-    transform: scale(1) !important;
-    opacity: 1 !important;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  #automation .image-box.slick-center {
-    transform: scale(1) !important;
-  }
-
-  #automation .arrow::before {
-    display: none;
-    visibility: hidden;
-  }
-
-  #automation .slider-content {
-    border-radius: 8px;
-    padding: 20px 15px 15px;
-    display: block;
-  }
-
-  #automation .content-item {
-    width: 100%;
-    margin: 0 0 20px 0;
-    text-align: center;
-  }
-
-  #automation .content-item:last-child {
-    margin-bottom: 0;
-  }
-
-  #automation .content-item h3 {
-    font-size: 16px;
-    min-height: auto;
-    margin-bottom: 10px;
-    justify-content: center;
-  }
-
-  #automation .dash {
-    width: 100px;
-    margin: 10px auto;
-  }
-
-  #automation .content-item p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-}
-
-/* Mobile portrait */
-@media (max-width: 576px) {
-  #automation {
-    padding-top: 50px;
-    padding-bottom: 25px;
-  }
-
-  #automation .slider-wrapper {
-    width: 100%;
-    text-align: center;
-    padding: 0 10px !important;
-  }
-
-  #automation .section-title {
-    font-size: 24px;
-    margin-bottom: 1.5rem;
-  }
-
-  #automation .slider-image .image-box img {
-    height: 180px;
-    border-radius: 12px;
-  }
-
-  #automation .slider-content {
-    border-radius: 6px;
-    padding: 15px 12px 12px;
-    margin: 0 5px;
-  }
-
-  #automation .content-item {
-    margin: 0 0 15px 0;
-  }
-
-  #automation .content-item h3 {
-    font-size: 14px;
-    line-height: 1.3;
-  }
-
-  #automation .dash {
-    width: 80px;
-    height: 1px;
-    margin: 8px auto;
-  }
-
-  #automation .content-item p {
-    font-size: 14px;
-    line-height: 1.4;
-  }
-}
-
-/* Mobile nhỏ - màn hình rất nhỏ */
-@media (max-width: 480px) {
-  #automation {
-    padding-top: 40px;
-    padding-bottom: 20px;
-  }
-
-  #automation .section-title {
-    font-size: 22px;
-    margin-bottom: 1.2rem;
-  }
-
-  #automation .slider-image .image-box img {
-    height: 160px;
-    border-radius: 10px;
-  }
-
-  #automation .slider-content {
-    padding: 12px 10px 10px;
-    margin-top: 30px;
-  }
-
-  #automation .content-item h3 {
-    font-size: 13px;
-  }
-
-  #automation .content-item p {
-    font-size: 13px;
-  }
-
-  #automation .dash {
-    width: 60px;
-    margin: 6px auto;
-  }
-}
-
-/* Landscape mobile */
-@media (max-width: 768px) and (orientation: landscape) {
-  #automation {
-    padding-top: 40px;
-    padding-bottom: 20px;
-  }
-
-  #automation .slider-image .image-box img {
-    height: 150px;
-  }
-}
-
-/* ===== FOOTER MOBILE RESPONSIVE STYLES ===== */
-.footer-mobile-responsive {
-  padding: 30px 0 !important;
-}
-
-.footer-mobile-logo {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.footer-mobile-logo img {
-  height: 40px !important;
-  margin-bottom: 15px !important;
-}
-
-.footer-mobile-social {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.footer-mobile-social a {
-  font-size: 18px;
-  margin: 0 10px;
-  color: #fff;
-  transition: color 0.3s ease;
-}
-
-.footer-mobile-social a:hover {
-  color: var(--primary-color);
-}
-
-.footer-mobile-section {
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.footer-mobile-section h5 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: var(--dark-text);
-}
-
-.footer-mobile-section ul {
-  margin: 0;
-  padding: 0;
-}
-
-.footer-mobile-section ul li {
-  margin-bottom: 8px;
-}
-
-.footer-mobile-section ul li a {
-  color: #666;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.footer-mobile-section ul li a:hover {
-  color: var(--primary-color);
-}
-
-.footer-mobile-copyright {
-  text-align: center;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-}
-
-.footer-mobile-copyright p {
-  font-size: 13px;
-  color: #999;
-  margin: 0;
-}
-
-/* Responsive breakpoints */
-@media (max-width: 768px) {
-  .footer-mobile-responsive .col-md-3 {
-    margin-bottom: 0 !important;
-  }
-
-  .footer-mobile-responsive .row {
-    margin: 0;
-  }
-
-  .footer-mobile-responsive .container {
-    padding: 0 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-mobile-responsive {
-    padding: 25px 0 !important;
-  }
-
-  .footer-mobile-logo img {
-    height: 35px !important;
-  }
-
-  .footer-mobile-social a {
-    font-size: 16px;
-    margin: 0 8px;
-  }
-
-  .footer-mobile-section h5 {
-    font-size: 15px;
-  }
-
-  .footer-mobile-section ul li a {
-    font-size: 13px;
-  }
-
-  .footer-mobile-copyright p {
-    font-size: 12px;
-  }
-}
-
-/* Prevent clicks during transitions */
-.milestones-carousel .slick-slide.is-transitioning {
-  pointer-events: none;
-}
+/* Responsive Design for Overview page */

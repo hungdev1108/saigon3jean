@@ -383,347 +383,149 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     document.head.appendChild(validationStyle);
   }
-  
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Initialize all carousels with auto-play
-  const carousels = document.querySelectorAll('.carousel');
-  carousels.forEach(function(carousel) {
+  const carousels = document.querySelectorAll(".carousel");
+  carousels.forEach(function (carousel) {
     new bootstrap.Carousel(carousel, {
-      interval: parseInt(carousel.getAttribute('data-bs-interval')) || 3000,
-      ride: 'carousel',
-      pause: 'hover',
-      wrap: true
+      interval: parseInt(carousel.getAttribute("data-bs-interval")) || 3000,
+      ride: "carousel",
+      pause: "hover",
+      wrap: true,
     });
   });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Accordion icon animation
-  const accordionButtons = document.querySelectorAll('.accordion-button');
-  
-  accordionButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const icon = this.querySelector('.accordion-icon');
-      const isCollapsed = this.classList.contains('collapsed');
-      
+  const accordionButtons = document.querySelectorAll(".accordion-button");
+
+  accordionButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const icon = this.querySelector(".accordion-icon");
+      const isCollapsed = this.classList.contains("collapsed");
+
       if (isCollapsed) {
-        icon.style.transform = 'rotate(0deg)';
+        icon.style.transform = "rotate(0deg)";
       } else {
-        icon.style.transform = 'rotate(45deg)';
+        icon.style.transform = "rotate(45deg)";
       }
     });
   });
 
   // Initialize first accordion icon
-  const firstIcon = document.querySelector('.accordion-button:not(.collapsed) .accordion-icon');
+  const firstIcon = document.querySelector(
+    ".accordion-button:not(.collapsed) .accordion-icon"
+  );
   if (firstIcon) {
-    firstIcon.style.transform = 'rotate(45deg)';
+    firstIcon.style.transform = "rotate(45deg)";
   }
 });
-document.querySelectorAll('.product-card').forEach(card => {
-  card.addEventListener('click', function() {
+document.querySelectorAll(".product-card").forEach((card) => {
+  card.addEventListener("click", function () {
     const productType = this.dataset.product;
     window.location.href = `product_details.html?product=${productType}`;
   });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Carousel auto-play code (đã có)
-  const carousels = document.querySelectorAll('.carousel');
-  carousels.forEach(function(carousel) {
+  const carousels = document.querySelectorAll(".carousel");
+  carousels.forEach(function (carousel) {
     new bootstrap.Carousel(carousel, {
-      interval: parseInt(carousel.getAttribute('data-bs-interval')) || 3000,
-      ride: 'carousel',
-      pause: 'hover',
-      wrap: true
+      interval: parseInt(carousel.getAttribute("data-bs-interval")) || 3000,
+      ride: "carousel",
+      pause: "hover",
+      wrap: true,
     });
   });
 
-  // ===== THÊM CODE NÀY ===== 
   // Product card click handlers
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', function(e) {
+  document.querySelectorAll(".product-card").forEach((card) => {
+    card.addEventListener("click", function (e) {
       // Prevent click if clicking on carousel controls
-      if (e.target.closest('.carousel-indicators') || e.target.closest('.carousel-control-prev') || e.target.closest('.carousel-control-next')) {
+      if (
+        e.target.closest(".carousel-indicators") ||
+        e.target.closest(".carousel-control-prev") ||
+        e.target.closest(".carousel-control-next")
+      ) {
         return;
       }
-      
+
       const productType = this.dataset.product;
       if (productType) {
         window.location.href = `product_details.html?product=${productType}`;
       }
     });
-    
+
     // Add cursor pointer and hover effect
-    card.style.cursor = 'pointer';
+    card.style.cursor = "pointer";
   });
 });
 
-// Modern Milestones Slick Carousel - Production Ready
-$(document).ready(function() {
+// Modern Milestones Slick Carousel - Optimized for Performance
+$(document).ready(function () {
   // Check if milestones carousel exists
-  if ($('.milestones-carousel').length) {
-      
-      // Initialize Slick Carousel with modern settings
-      $('.milestones-carousel').slick({
-          centerMode: true,      // No padding for exact 3 items
-          centerPadding: '0px',  // Không padding để hiển thị đúng 3 item
-          slidesToShow: 3,       // Show exactly 3 items
-          slidesToScroll: 1,
-          autoplay: true,
-          arrows: false,
-          dots: false,           // Remove dots navigation
-          infinite: true,        // Smooth transition speed
-          cssEase: 'cubic-bezier(0.25, 0.1, 0.25, 1)', // Smoother easing
-          speed: 700,            // Slightly slower for smoother transitions
-          focusOnSelect: true,   // Click to select
-          variableWidth: false,  // Đảm bảo width cố định cho mỗi item
-          pauseOnHover: true,
-          pauseOnFocus: true,
-          waitForAnimate: true,// Wait for animation to complete before next slide
-          responsive: [
-              {
-                  breakpoint: 992,
-                  settings: {
-                      slidesToShow: 3,
-                      centerPadding: '0px',
-                     
-                  }
-              },
-              {
-                  breakpoint: 768,
-                  settings: {
-                      slidesToShow: 1,
-                      centerMode: true,    // Bật centerMode cho mobile
-                      centerPadding: '15%',
-                      arrows: false,
-                      
-                  }
-              },
-              {
-                  breakpoint: 480,
-                  settings: {
-                      slidesToShow: 1,
-                      centerMode: true,    // Bật centerMode cho mobile
-                      centerPadding: '10%',
-                      arrows: false,
-                      
-                  }
-              }
-          ]
-      });
-
-      // Click on partial visible items to navigate
-      $(document).on('click', '.timeline-item', function(e) {
-        var $slide = $(this).closest('.slick-slide');
-        
-        // Only navigate if not center slide
-        if (!$slide.hasClass('slick-center')) {
-            e.preventDefault();
-            
-            // Add transitioning class to all slides to prevent multiple clicks
-            $('.milestones-carousel .slick-slide').addClass('is-transitioning');
-            
-            var slideIndex = $slide.data('slick-index');
-            $('.milestones-carousel').slick('slickGoTo', slideIndex);
-            
-            // Remove transitioning class after animation completes
-            setTimeout(function() {
-                $('.milestones-carousel .slick-slide').removeClass('is-transitioning');
-            }, 700); // Match with transition speed
-        }
-        
-        // // Add ripple effect
-        // addRippleEffect($(this), e);
-      });
-
-      // Enhanced hover effects for arrows
-      $('.milestones-carousel .slick-prev, .milestones-carousel .slick-next').hover(
-          function() {
-              $(this).css('transform', 'scale(1.15)');
+  if ($(".milestones-carousel").length) {
+    // Initialize Slick Carousel with optimized settings
+    $(".milestones-carousel").slick({
+      centerMode: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      // autoplay: true,
+      arrows: false,
+      dots: false,
+      infinite: true,
+      speed: 500,
+      cssEase: "linear",
+      // autoplaySpeed: 4000,
+      initialSlide: 0,
+      focusOnSelect: true,
+      variableWidth: false,
+      pauseOnHover: true,
+      pauseOnFocus: true,
+      waitForAnimate: false,
+      lazyLoad: "ondemand",
+      adaptiveHeight: false,
+      swipeToSlide: true,
+      touchThreshold: 10,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 3,
+            centerPadding: "0px",
           },
-          function() {
-              $(this).css('transform', 'scale(1)');
-          }
-      );
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            centerMode: true,
+            centerPadding: "15%",
+            arrows: false,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            centerMode: true,
+            centerPadding: "10%",
+            arrows: false,
+          },
+        },
+      ],
+    });
 
-      // Custom event handlers for better UX
-      $('.milestones-carousel').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-          // Add loading state or prepare next slide
-          $('.timeline-item').removeClass('slide-changing');
-          $('.slick-slide[data-slick-index="' + nextSlide + '"] .timeline-item').addClass('slide-changing');
-          
-          // Fix height during transition
-          var currentHeight = $('.slick-slide[data-slick-index="' + currentSlide + '"] .timeline-item').outerHeight();
-          var nextHeight = $('.slick-slide[data-slick-index="' + nextSlide + '"] .timeline-item').outerHeight();
-          
-          // Ensure smooth height transition
-          if (currentHeight !== nextHeight) {
-              $('.milestones-carousel').css('height', Math.max(currentHeight, nextHeight) + 'px');
-          }
-      });
-
-      $('.milestones-carousel').on('afterChange', function(event, slick, currentSlide) {
-          // Clean up after slide change
-          $('.timeline-item').removeClass('slide-changing');
-          $('.milestones-carousel').css('height', '');
-          
-          // Optional: track analytics
-          console.log('Milestone slide changed to:', currentSlide);
-      });
-
-      // Keyboard navigation
-      $(document).on('keydown', function(e) {
-          if ($('.milestones-carousel').is(':hover') || $('.milestones-carousel').is(':focus-within')) {
-              if (e.keyCode === 37) { // Left arrow
-                  $('.milestones-carousel').slick('slickPrev');
-                  e.preventDefault();
-              } else if (e.keyCode === 39) { // Right arrow
-                  $('.milestones-carousel').slick('slickNext');
-                  e.preventDefault();
-              }
-          }
-      });
-
-      // Touch/swipe enhancements for mobile
-      var touchStartX = 0;
-      var touchEndX = 0;
-      
-      $('.milestones-carousel').on('touchstart', function(e) {
-          touchStartX = e.originalEvent.touches[0].clientX;
-      });
-      
-      $('.milestones-carousel').on('touchend', function(e) {
-          touchEndX = e.originalEvent.changedTouches[0].clientX;
-          handleSwipe();
-      });
-      
-      function handleSwipe() {
-          var swipeThreshold = 50;
-          var diff = touchStartX - touchEndX;
-          
-          if (Math.abs(diff) > swipeThreshold) {
-              if (diff > 0) {
-                  // Swipe left - next slide
-                  $('.milestones-carousel').slick('slickNext');
-              } else {
-                  // Swipe right - previous slide
-                  $('.milestones-carousel').slick('slickPrev');
-              }
-          }
+    $(".milestones-carousel img").each(function () {
+      var imgSrc = $(this).attr("src");
+      if (imgSrc) {
+        var img = new Image();
+        img.src = imgSrc;
       }
+    });
   }
-
-  // Ripple effect function
-  // function addRippleEffect($element, event) {
-  //     var ripple = $('<span class="click-ripple"></span>');
-  //     var size = Math.max($element.outerWidth(), $element.outerHeight());
-  //     var x = event.pageX - $element.offset().left - size / 2;
-  //     var y = event.pageY - $element.offset().top - size / 2;
-      
-  //     ripple.css({
-  //         width: size,
-  //         height: size,
-  //         left: x,
-  //         top: y
-  //     }).appendTo($element);
-      
-  //     // Remove ripple after animation
-  //     setTimeout(function() {
-  //         ripple.remove();
-  //     }, 800);
-  // }
-
-  // Intersection Observer for scroll animations (optional enhancement)
-  if ('IntersectionObserver' in window) {
-      const observerOptions = {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-              if (entry.isIntersecting) {
-                  entry.target.classList.add('animate-in');
-                  // Start autoplay when section comes into view
-                  if (entry.target.classList.contains('milestones-section')) {
-                      $('.milestones-carousel').slick('slickPlay');
-                  }
-              } else {
-                  // Pause autoplay when section is out of view
-                  if (entry.target.classList.contains('milestones-section')) {
-                      $('.milestones-carousel').slick('slickPause');
-                  }
-              }
-          });
-      }, observerOptions);
-
-      // Observe the milestones section
-      const milestonesSection = document.querySelector('.milestones-section');
-      if (milestonesSection) {
-          observer.observe(milestonesSection);
-      }
-  }
-
-  // Window resize handler for better responsive behavior
-  $(window).on('resize', debounce(function() {
-      if ($('.milestones-carousel').hasClass('slick-initialized')) {
-          $('.milestones-carousel').slick('refresh');
-      }
-  }, 250));
-
-  // Debounce function for performance
-  function debounce(func, wait, immediate) {
-      var timeout;
-      return function() {
-          var context = this, args = arguments;
-          var later = function() {
-              timeout = null;
-              if (!immediate) func.apply(context, args);
-          };
-          var callNow = immediate && !timeout;
-          clearTimeout(timeout);
-          timeout = setTimeout(later, wait);
-          if (callNow) func.apply(context, args);
-      };
-  }
-});
-
-// Handle timeline year styling for center slide
-$('.milestones-carousel').on('afterChange', function(event, slick, currentSlide) {
-  // Remove center class from all years
-  $('.timeline-year').removeClass('center-year');
-  
-  // Add center class to current slide's year
-  $('.slick-slide').eq(currentSlide).find('.timeline-year').addClass('center-year');
-  
-  console.log('Milestone slide changed to:', currentSlide);
-});
-
-// Initial center year on page load
-setTimeout(function() {
-  var currentSlide = $('.milestones-carousel').slick('slickCurrentSlide');
-  $('.slick-slide').eq(currentSlide).find('.timeline-year').addClass('center-year');
-}, 100);
-// Trong phần xử lý click của timeline-item
-$(document).on('click', '.timeline-item', function(e) {
-  var $slide = $(this).closest('.slick-slide');
-  
-  // Xóa class center-year khỏi tất cả timeline-year
-  $('.timeline-year').removeClass('center-year');
-  
-  // Thêm class center-year vào timeline-year của slide được click
-  $slide.find('.timeline-year').addClass('center-year');
-  
-  // Only navigate if not center slide
-  if (!$slide.hasClass('slick-center')) {
-      e.preventDefault();
-      var slideIndex = $slide.data('slick-index');
-      $('.milestones-carousel').slick('slickGoTo', slideIndex);
-  }
-  
-  // Add ripple effect
-  // addRippleEffect($(this), e);
 });
