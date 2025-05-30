@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Saigon 3 Jeans" />
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automation - Saigon 3 Jean</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/mobile-drawer.css" />
+  </head>
+
+  <body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Page content goes here -->
+      <section id="automation" class="py-5">
+        <div class="container">
+          <h2 class="section-title mt-5">AUTOMATION</h2>
+          <div class="slider-wrapper">
+            <!-- Hình ảnh chính -->
+            <div class="slider-image">
+              <div class="image-box">
+                <img src="../images/automation/automation_3.png" />
+              </div>
+              <div class="image-box">
+                <img src="../images/automation/automation_2.jpg" />
+              </div>
+              <div class="image-box">
+                <img src="../images/automation/automation_1.png" />
+              </div>
+            </div>
+
+            <div class="content-container">
+              <div class="arrow"></div>
+              <div class="slider-content">
+                <div class="content-item">
+                  <h3>AUTOMATIC CHEMICAL QUANTIFICATION</h3>
+                  <div class="dash"></div>
+                  <p>
+                    The system automatically calculates and precisely
+                    distributes the required amount of chemicals for each
+                    production process, enabling real-time monitoring of energy
+                    consumption.
+                  </p>
+                </div>
+                <div class="content-item">
+                  <h3>CONTINUOUS MONITORING AND ADJUSTMENT</h3>
+                  <div class="dash"></div>
+                  <p>
+                    Sensors continuously record data on chemical levels,
+                    temperature, pressure, and flow rate. The system integrates
+                    remote management and control through a digital interface,
+                    processing data to optimize chemical ratios and make
+                    automatic adjustments
+                  </p>
+                </div>
+                <div class="content-item">
+                  <h3>DATA STORAGE AND ANALYSIS</h3>
+                  <div class="dash"></div>
+                  <p>
+                    The system provides reports on chemical usage performance,
+                    compares it with desired standards, and suggests
+                    improvements when necessary.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/includes.js"></script>
+    <script src="../js/mobile-drawer.js"></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+
+    <script>
+      $(".slider-image").slick({
+        // centerMode: true,
+        slidesToShow: 3,
+        arrows: true,
+        asNavFor: ".slider-content",
+        adaptiveHeight: true,
+        focusOnSelect: true,
+        infinite: true,
+        swipe: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              centerMode: false,
+              arrows: true,
+              infinite: true,
+              dots: true,
+            },
+          },
+        ],
+      });
+
+      $(".slider-content").slick({
+        centerMode: false,
+        slidesToShow: 3,
+        arrows: true,
+        asNavFor: ".slider-image",
+        // infinite: true,
+        adaptiveHeight: true,
+        swipe: false,
+        draggable: false,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              centerMode: false,
+              // infinite: true,
+              swipe: false,
+              draggable: false,
+            },
+          },
+        ],
+      });
+    </script>
+  </body>
+</html>
