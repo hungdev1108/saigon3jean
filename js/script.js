@@ -469,7 +469,6 @@ $(document).ready(function() {
       // Initialize Slick Carousel with modern settings
       $('.milestones-carousel').slick({
           centerMode: true,      // No padding for exact 3 items
-          centerMode: true,      // Bật centerMode để item ở giữa luôn được đánh dấu
           centerPadding: '0px',  // Không padding để hiển thị đúng 3 item
           slidesToShow: 3,       // Show exactly 3 items
           slidesToScroll: 1,
@@ -477,11 +476,13 @@ $(document).ready(function() {
           arrows: false,
           dots: false,           // Remove dots navigation
           infinite: true,        // Smooth transition speed
-          cssEase: 'cubic-bezier(0.23, 1, 0.32, 1)', // Modern easing
+          cssEase: 'cubic-bezier(0.25, 0.1, 0.25, 1)', // Smoother easing
+          speed: 700,            // Slightly slower for smoother transitions
           focusOnSelect: true,   // Click to select
           variableWidth: false,  // Đảm bảo width cố định cho mỗi item
           pauseOnHover: true,
           pauseOnFocus: true,
+          waitForAnimate: true,// Wait for animation to complete before next slide
           responsive: [
               {
                   breakpoint: 992,
@@ -515,20 +516,28 @@ $(document).ready(function() {
       });
 
       // Click on partial visible items to navigate
-   // Click on partial visible items to navigate
-$(document).on('click', '.timeline-item', function(e) {
-  var $slide = $(this).closest('.slick-slide');
-  
-  // Only navigate if not center slide
-  if (!$slide.hasClass('slick-center')) {
-      e.preventDefault();
-      var slideIndex = $slide.data('slick-index');
-      $('.milestones-carousel').slick('slickGoTo', slideIndex);
-  }
-  
-  // Add ripple effect
-  addRippleEffect($(this), e);
-});
+      $(document).on('click', '.timeline-item', function(e) {
+        var $slide = $(this).closest('.slick-slide');
+        
+        // Only navigate if not center slide
+        if (!$slide.hasClass('slick-center')) {
+            e.preventDefault();
+            
+            // Add transitioning class to all slides to prevent multiple clicks
+            $('.milestones-carousel .slick-slide').addClass('is-transitioning');
+            
+            var slideIndex = $slide.data('slick-index');
+            $('.milestones-carousel').slick('slickGoTo', slideIndex);
+            
+            // Remove transitioning class after animation completes
+            setTimeout(function() {
+                $('.milestones-carousel .slick-slide').removeClass('is-transitioning');
+            }, 700); // Match with transition speed
+        }
+        
+        // // Add ripple effect
+        // addRippleEffect($(this), e);
+      });
 
       // Enhanced hover effects for arrows
       $('.milestones-carousel .slick-prev, .milestones-carousel .slick-next').hover(
@@ -540,18 +549,26 @@ $(document).on('click', '.timeline-item', function(e) {
           }
       );
 
-    
-
       // Custom event handlers for better UX
       $('.milestones-carousel').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
           // Add loading state or prepare next slide
           $('.timeline-item').removeClass('slide-changing');
           $('.slick-slide[data-slick-index="' + nextSlide + '"] .timeline-item').addClass('slide-changing');
+          
+          // Fix height during transition
+          var currentHeight = $('.slick-slide[data-slick-index="' + currentSlide + '"] .timeline-item').outerHeight();
+          var nextHeight = $('.slick-slide[data-slick-index="' + nextSlide + '"] .timeline-item').outerHeight();
+          
+          // Ensure smooth height transition
+          if (currentHeight !== nextHeight) {
+              $('.milestones-carousel').css('height', Math.max(currentHeight, nextHeight) + 'px');
+          }
       });
 
       $('.milestones-carousel').on('afterChange', function(event, slick, currentSlide) {
           // Clean up after slide change
           $('.timeline-item').removeClass('slide-changing');
+          $('.milestones-carousel').css('height', '');
           
           // Optional: track analytics
           console.log('Milestone slide changed to:', currentSlide);
@@ -600,24 +617,24 @@ $(document).on('click', '.timeline-item', function(e) {
   }
 
   // Ripple effect function
-  function addRippleEffect($element, event) {
-      var ripple = $('<span class="click-ripple"></span>');
-      var size = Math.max($element.outerWidth(), $element.outerHeight());
-      var x = event.pageX - $element.offset().left - size / 2;
-      var y = event.pageY - $element.offset().top - size / 2;
+  // function addRippleEffect($element, event) {
+  //     var ripple = $('<span class="click-ripple"></span>');
+  //     var size = Math.max($element.outerWidth(), $element.outerHeight());
+  //     var x = event.pageX - $element.offset().left - size / 2;
+  //     var y = event.pageY - $element.offset().top - size / 2;
       
-      ripple.css({
-          width: size,
-          height: size,
-          left: x,
-          top: y
-      }).appendTo($element);
+  //     ripple.css({
+  //         width: size,
+  //         height: size,
+  //         left: x,
+  //         top: y
+  //     }).appendTo($element);
       
-      // Remove ripple after animation
-      setTimeout(function() {
-          ripple.remove();
-      }, 800);
-  }
+  //     // Remove ripple after animation
+  //     setTimeout(function() {
+  //         ripple.remove();
+  //     }, 800);
+  // }
 
   // Intersection Observer for scroll animations (optional enhancement)
   if ('IntersectionObserver' in window) {
@@ -708,5 +725,5 @@ $(document).on('click', '.timeline-item', function(e) {
   }
   
   // Add ripple effect
-  addRippleEffect($(this), e);
+  // addRippleEffect($(this), e);
 });
