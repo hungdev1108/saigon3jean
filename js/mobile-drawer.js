@@ -70,7 +70,6 @@
     const existingNavItems = document.querySelectorAll(
       ".navbar-nav .nav-item .nav-link"
     );
-    console.log("Tìm thấy nav items:", existingNavItems.length);
 
     let navItemsHTML = "";
 
@@ -174,11 +173,10 @@
    */
   function replaceToggler() {
     const existingToggler = document.querySelector(".navbar-toggler");
-    console.log("Tìm thấy navbar-toggler:", existingToggler ? "Có" : "Không");
 
     if (!existingToggler) {
       // Nếu không tìm thấy, tạo toggler mới và thêm vào header
-      console.log("Tạo toggler mới vì không tìm thấy navbar-toggler");
+
       const header = document.querySelector("header");
       const navbar = document.querySelector(".navbar");
       const targetElement = navbar || header || document.body;
@@ -234,18 +232,11 @@
 
       // Replace toggler
       toggler = replaceToggler();
-      console.log("Toggler được tạo:", toggler ? "Thành công" : "Thất bại");
 
       // Get references
       drawer = document.querySelector(CONFIG.drawerSelector);
       overlay = document.querySelector(CONFIG.overlaySelector);
       closeBtn = document.querySelector(CONFIG.closeSelector);
-
-      console.log("Kiểm tra các phần tử cần thiết:");
-      console.log("- Drawer:", drawer ? "Tìm thấy" : "Không tìm thấy");
-      console.log("- Overlay:", overlay ? "Tìm thấy" : "Không tìm thấy");
-      console.log("- Toggler:", toggler ? "Tìm thấy" : "Không tìm thấy");
-      console.log("- CloseBtn:", closeBtn ? "Tìm thấy" : "Không tìm thấy");
 
       if (!drawer || !overlay || !toggler || !closeBtn) {
         console.error("SG3MobileDrawer: Required elements not found");
@@ -506,8 +497,6 @@
    * Public method để sử dụng sau khi header được tải
    */
   function reinitializeDrawer() {
-    console.log("Đang khởi tạo lại mobile drawer");
-
     // Cleanup first
     if (isOpen) {
       closeDrawer();
@@ -529,11 +518,8 @@
   function init() {
     if (isInitialized) return;
 
-    console.log("Bắt đầu khởi tạo mobile drawer");
-
     // Initialize elements
     if (!initElements()) {
-      console.log("Không thể khởi tạo mobile drawer - thiếu phần tử cần thiết");
       return;
     }
 
@@ -542,7 +528,6 @@
 
     // Set initialized flag
     isInitialized = true;
-    console.log("Mobile drawer đã được khởi tạo thành công");
 
     // Expose public methods
     window.SG3MobileDrawer.open = openDrawer;
